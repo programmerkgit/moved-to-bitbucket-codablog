@@ -10,3 +10,4 @@ Object.keys(obj).forEach(function (colorName) {
   var text = ".bg-" + colorName + " {\n  background-color: $" + colorName + " !important;\n}\n.text-" + colorName + " {\n  color: $" + colorName + " !important;\n}\n";
   colorClassesWs.write(text);
 });
+// this script took 30 minutes to write

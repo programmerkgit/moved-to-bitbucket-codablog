@@ -1,28 +1,20 @@
-<header>
-  <div class="bg-melrose d-flex justify-content-between align-items-center py-40px px-20px">
-    <div class="text-downriver">
-      To Menu And Logo
-    </div>
-    <div class="text-downriver">
-      Right Top
-    </div>
+<header class="bg-melrose d-flex justify-content-between align-items-center p-20px sticky-top">
+  <div class="text-downriver">
+    <p>I want to this header open only when u slide to up Control View Width by Angular and media type</p>
+    To Menu And Logo
+  </div>
+  <div class="text-downriver">
+    Right Top
   </div>
 </header>
 <div class="d-flex">
-  <div class="side-nav bg-melrose">
-    side nav
+  <div class="side-nav bg-wild-sand shadow">
+    <app-navigation></app-navigation>
   </div>
-  <div class="flex-grow-1">
-    <p>In Very Simple Structure</p>
-    <p>In Three Weeks</p>
-    <p>Side Navigation and routed to any component</p>
-    <p>No Database</p>
-    <p class="bg-dodger-blue">HTML header how to user</p>
-    <p class="bg-melrose">Side how to user</p>
-    <p>Angular material side how to use</p>
-    <p>Angular material responsive side nav</p>
+  <div class="flex-grow-1 p-20px">
+    <router-outlet></router-outlet>
   </div>
 </div>
-<div class="bg-downriver">
+<div class="bg-downriver p-20px">
   footer
 </div>
