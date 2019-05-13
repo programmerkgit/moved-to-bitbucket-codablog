@@ -8,7 +8,8 @@ const routes: Routes = [
   {
     path: '', component: CodeBlogComponent, children: [
       {path: '', component: IndexComponent},
-      {path: 'git', component: GitComponent}
+      {path: 'git', component: GitComponent},
+      {path: 'bitcoin', loadChildren: '../bitcoin/bitcoin.module#BitcoinModule'}
     ]
   }
 ];

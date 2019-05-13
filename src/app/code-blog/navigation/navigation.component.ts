@@ -9,7 +9,8 @@ export class NavigationComponent implements OnInit {
 
   @Input() links: { url: string, label: string }[] = [
     {url: '/', label: 'Home'},
-    {url: '/git', label: 'Git'}
+    {url: '/git', label: 'Git'},
+    {url: '/bitcoin', label: 'Bitcoin'}
   ];
 
   constructor() {

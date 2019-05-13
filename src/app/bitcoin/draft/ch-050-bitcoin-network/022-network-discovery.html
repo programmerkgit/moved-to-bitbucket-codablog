@@ -1,0 +1,41 @@
+<h1>Network Discovery</h1>
+<p>Bitcoin node first has to discover at least one other node to connect to the network.</p>
+
+<p>To connect to a known peer, nodes establish a TCP connection usually to port 8333.</p>
+<p>Upon establishing a connection, the node will start a 'handshake', by transmitting version message</p>
+
+<h2>Version Message</h2>
+<p>Version message contains contains basic identifying information including</p>
+<ul>
+  <li>nVersion: The bitcoin p2p protocol version the client speaks.</li>
+  <li>nTime: The current time</li>
+  <li>nLocal Services: A list of local services supported bt the node, currently just NODE_NETWORK</li>
+  <li>addrYOU: The IP address of the remote node as seen from this node.</li>
+  <li>addrMe: The IP address of the local node, as discovered by the local node.</li>
+  <li>subver: A sub-version showing the type of software running on this node.</li>
+  <li>BestHeight: The block height of this node's blockchain.</li>
+</ul>
+<p>Version Message is a first message sent by peer to another peer.</p>
+<p>Local peer receiving version message from remote peer, decides if the remote peer is compatible.</p>
+<p>If the remote peer is compatible, the local peer acknowledge the version message and establishes connection by
+  sending verack</p>
+
+<h2>Process of finding other nodes.</h2>
+<!--TODO-->
+<p>DNS seeds. Dns server providing a static list of IP addresses of stable bitcoin nodes.</p>
+<p>The seeds that are currently included in the Bitcoin Core client are:<p></p>
+<ul>
+  <li>bitcoin.sipa.be</li>
+  <li>dnsseed.bluematt.me</li>
+  <li>dnsseed.bitcoin.dashjr.org</li>
+  <li>seed.bitcoinstats.com</li>
+  <li>bitseed.xf2.org</li>
+  <li>bitcoin.jonasschnelli.ch</li>
+</ul>
+
+<p>Besides the DNS seeds, the Core client also has a static list of IPs to try first and it will cache any previously
+  contacted peers in a local database in order to reconnect without having to query the DNS seeds.</p>
+
+<p>DNS hard coded addresses: https://github.com/bitcoin/bitcoin/blob/master/src/chainparamsseeds.h</p>
+<p>IP tables</p>
+
