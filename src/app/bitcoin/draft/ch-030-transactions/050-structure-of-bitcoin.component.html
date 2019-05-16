@@ -1,1 +1,35 @@
 <h1>Locking Script</h1>
+
+<p>アリスがボブのアドレスに10BTCを送金すると、そのBTCには解除条件が与えられます。</p>
+<p>その解除条件とは、「ボブのアドレスに対応した秘密鍵の電子署名を提示した人のみが10BTCコインを使用できる」というようなものです。</p>
+<p>この解除条件をロッキングスクリプトと言います。</p>
+<p>解除条件は「Script」と呼ばれる言語で表現され、実際には様々な条件をプログラムすることができます。</p>
+<p>解除条件は一定の規約にしたがって構築され、一番基本的な形が「アドレスに対応する電子署名を提示する」という条件を付与するものとなります。</p>
+
+
+<h1>Locking Scriptとは</h1>
+<p>トランザクションアウトプットをLockするスクリプト</p>
+<p>「ボブの秘密鍵に対応した電子署名を提示した人のみがビットコインを使用できます」という意味を持つ</p>
+<p></p>
+
+<ul>
+  <li>What Is Locking script: 解除条件となるスクリプト</li>
+  <li></li>
+  <li>インプットに含まれている</li>
+  <li>unlocking scriptが解除条件</li>
+  <li>
+    Script言語でできている
+    <ul>
+      <li>逆ポーランド記法で記述</li>
+      <li>
+        Execution of locking script: learn later
+        <ul>
+          <li>exec unlocking script</li>
+          <li>copy stack of unlocking script</li>
+          <li>exec locking script with stack with data copied</li>
+          <li></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
