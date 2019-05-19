@@ -1,0 +1,15 @@
+<h1>Selection of transaction</h1>
+<p>When minner choose transactions included in a block, there is a priority</p>
+<p>The caluculation of priority is like this</p>
+<p>age * fee</p>
+<p>age is the age of transaction.</p>
+<p>Fee is transaction fees</p>
+<p>there is high priority transactions</p>
+<p>Block has a max of max_byte of transactoins</p>
+<p>first 50kb of block is space for high priority transactions</p>
+<p>If transaction is high priority, transactions are added to block first even if it has no transaction fee </p>
+<p>then, until reach to max_byte, miner choose transaction according to priority calculation.</p>
+<p>Those transactions not included in this block get age added.</p>
+<p>Transactions are in the memory pool until added to block, so eventually transaction get more age and reach to high priority, added to block</p>
+<p>In Case only one miner has transaction, when that node restart, that transaction is lost because transaction pool is not storage</p>
+<p>Wallet should has the functionality to make new transaction when they detect that transactions are lost in the network</p>
