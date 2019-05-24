@@ -1,0 +1,28 @@
+<h1>finite automaton</h1>
+<h2>three types of finite automan</h2>
+<ul>
+  <li>deterministic finite automaton </li>
+  <li>non deterministic finite automaton</li>
+  <li>non deterministic finite automaton with empty input</li>
+</ul>
+
+<h2>definition of deterministic automaton</h2>
+<ul>
+  <li>state: Q</li>
+  <li>initial state: q0 element of Q</li>
+  <li>accepting state: 　F subset of Q </li>
+  <li>Input symbol Σ </li>
+  <li>move function f: Q * Σ => Q </li>
+</ul>
+<p>accept: when words are accepted: final state is element of accepting state</p>
+<p>configuration: situation at the middle of automaton</p>
+<p>configuration can be expressed the remain of input and state (q, ax) | a is the next symbol x is remaining word</p>
+<p>initial configuration = (q0, a1a2a3,,,,,an)</p>
+
+<h2>Step</h2>
+<p>configuration (q, ax) |-M configuration (p, x) === (f(q, a) => p)</p>
+<p>(q0, a1a2a3a4a5....an) |- M* (qn, ε): |- M* reflexive-transitive closure</p>
+
+<h2>accepting language</h2>
+<p>L(M) = {w | ∊ ∉ Σ* (q0, w) |-M* (qn, ε), qn ∊ F}</p>
+<p>W(M) = (q0, w) |-M* (qn, ε), qn ∊ F を満たす時、w を W(M) </p>
