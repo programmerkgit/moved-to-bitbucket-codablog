@@ -1,0 +1,40 @@
+<h1>ブロックのデータ構造</h1>
+ここで、ブロックの中身を見ていきましょう。
+ブロックの中身は以下の通りです。
+<ul>
+  <li>Block Size: データのサイズ</li>
+  <li><b>Block Header: ヘッダー情報</b></li>
+  <li>Transaction Counter: トランザクション数</li>
+  <li><b>Transactions : トランザクションデータ</b></li>
+</ul>
+
+ヘッダー情報と、含んでいる全てのトランザクションデータが含まれています。
+次のページでは、ヘッダー情報を確認しましょう。
+
+
+<ul>
+  <li>Version: ビットコインのバージョン</li>
+  <li>Prev Block Hash: 前のブロックのハッシュ値</li>
+  <li>Merkle Root: トランザクションの要約情報</li>
+  <li></li>
+  <li>Difficulty</li>
+  <li>Nonce</li>
+</ul>
+
+
+<ul>
+  <li>Prev Block Hash</li>
+  <li>Merkle Tree</li>
+  <li>Block Height</li>
+  <li>Transactions</li>
+  <li>Difficulty</li>
+  <li>Nonce</li>
+</ul>
+
+
+<p>トランザクションの集合</p>
+<p>ブロックヘッダー: メタデータを集めたもの</p>
+<p>ブロックヘッダーのハッシュ値</p>
+<p>ヘッダーには親ブロックのハッシュ値(Previous hash)を含む</p>
+<p>Genesis Blockは最初のブロック</p>
+<p>chain状に連続接続されていて、ブロックからGenesis Block をだどれるようになって/いる</p>

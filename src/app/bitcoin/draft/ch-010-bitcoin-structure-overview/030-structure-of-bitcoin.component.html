@@ -1,8 +1,31 @@
-<h1>Transaction Chain</h1>
+<h1>トランザクションの生成の仕組み</h1>
+
+<p>コース「ブロックチェーンの基本的な仕組み」でも軽く説明しましたが、
+  トランザクション(ビットコインの送金)、の生成は電子署名によって行われます。</p>
+<p>この電子署名は<b>秘密鍵</b>と呼ばれるアリスしか知らない暗号鍵によって作られます。</p>
+<p>電子署名によって署名されたデータは改ざんすることや取り消すことができなくなります。</p>
+<p>また、このトランザクションは送金先であるボブの秘密鍵でしか解除できないようにロックされます。</p>
+<p>そうしてトランザクションで送金された金額はボブにしか利用できない状態になり、ボブにビットコインの所有権が移ることになります</p>
+
+<p>ウォレットはこの秘密鍵や公開鍵を管理しているアプリケーションであり、
+  秘密鍵や公開鍵からトランザクションを生成したり、自分が利用可能なビットコインの金額を計算するためのロジックがプログラムされています。</p>
 
 
-<p>Inputs Referencing another transaction's outputs</p>
-<p>Providing Digital signature and prove to the network that she is an owner of bitcoin</p>
-<p>Send To bobs address, And then, Bitcoin is locked.</p>
-<p>Bob only can provide corresponding signature to unlock the bitcoin.</p>
-<p>These Chain of Transaction is illustrated as these.</p>
+
+
+<h1>複式簿記 Transaction is like a double book-keeping</h1>
+<p>There are a few inputs and a few outputs sent from someone</p>
+<p>Input may under the value of your outputs, or over the value of outputs</p>
+<p>You should sufficient inputs for outputs</p>
+<p>Inputs Identify another inputs</p>
+<p>Transaction also need proof of owner ships for each of inputs for spending</p>
+<p>In Bitcoin, Spending is signing in the transaction in the form of digital signature</p>
+<p>The signature can be validated by anyone.</p>
+
+
+<p>Outputs</p>
+<p>You need a pay check like you pay a paper money.</p>
+<p>You Send change to yourself</p>
+<p>The remains are fees.</p>
+<p>Those fees are paid in return for miner when this transactions are added to block and block are added to
+  blockchain.</p>
