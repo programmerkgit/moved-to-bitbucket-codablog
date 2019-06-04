@@ -1,26 +1,13 @@
 <h1>トランザクションの検証</h1>
-<p>トランザクションが生成されると、トランザクションはネットワーク上に伝播される必要があります。</p>
-<p>しかし、トランザクションを伝播する前に、トランザクションが正しいものかどうかを検証する必要があります。</p>
-<p>トランザクションが正しいためには、以下のような十数にわたる検証項目を確認する必要があります。</p>
+<p>ブロックはトランザクションデータの集まりでした。</p>
+<p>なので、ブロックを構築するにはまずトランザクションデータをネットワークから受け取ることから始まります。</p>
+<p>しかし、受け入れてはいけない不正なトランザクションも存在しているため、ノードはトランザクションの検証をし有効なもののみ受け取ります。</p>
+<p>検証の内容は多岐に渡りますが、例えば以下のようなものが含まれています。</p>
 <ul>
-  <li>1</li>
-  <li>2</li>
-  <li>3</li>
+  <li>トランザクションデータサイズが一定値以下</li>
+  <li>トランザクションの構文とデータ構造が正しいか</li>
+  <li>トランザクション手数料が少なすぎないか</li>
+  <li>インプットのunlocking scriptがlocking scriptを解除できるか</li>
+  <li>インプットが参照しているアウトプットが未使用か</li>
+  <li>他のトランザクションのインプットが同じアウトプットを参照していないか</li>
 </ul>
-<p>ノードは受け取ったトランザクションについてすべての項目を検証し、問題があればそのトランザクションを破棄し、問題なければ他のノードに伝播します。</p>
-<p>次のノードも同様のプロセスを繰り返すことで、正しいトランザクションがネットワーク上のほぼすべてのノードへと伝播することになります</p>
-<p>このチェック項目は、トランザクションの種類の追加など、ビットコインの仕様の変更ととも必要に応じて変化していきます。</p>
-
-<hr>
-図
-trasaction 検証項目
-
-<h1>Independent transaction validation</h1>
-<p>Transactions are need to be spread to network, but before relayed to network, transactions are validated by every node</p>
-<p>Check list of validity is above these</p>
-<ul>
-  <li></li>
-</ul>
-
-<p>The list of validity can be checked by Check Transaction, Check Inputs, AcceptToMemoryPool Methods in Bitcoin reference client.</p>
-<p>These validations are changed when the kind of transactions are added, or to protect from new kind of dos attack</p>
