@@ -1,0 +1,28 @@
+<h1>Prev Block Hashとハッシュ値</h1>
+<p>次は、前のブロックのハッシュ値に着目しましょう。</p>
+<ul>
+  <li>Version: ビットコインのバージョン</li>
+  <li>Prev Block Hash: 前のブロックのハッシュ値</li>
+  <li><b>Merkle Root</b>: トランザクションの要約情報</li>
+  <li>Timestamp: ブロックの生成時刻</li>
+  <li><b>Difficulty Target</b>: マイニングの難易度を示す値</li>
+  <li><b>Nonce(ナンス)</b>: マイニングによって得られた値</li>
+</ul>
+<p>前のブロックのハッシュ値を基にブロックのハッシュ値が計算されるということは、
+  前のブロックのハッシュ値が変わると今のブロックのハッシュ値が変わるということです。</p>
+<p>そして、ブロックのハッシュ値は「トランザクションの要約」に依存しているのでした。</p>
+<p>つまり、前のブロックのトランザクションデータを書き換えると、前のブロックのハッシュ値が書き換わります。</p>
+<p>そして、前のブロックのハッシュ値が書き換わると今のブロックのハッシュ値も書き換わります。</p>
+<p>そのため、前のブロックのトランザクションを書き換えたデータを作るには、前のブロックのナンスの再計算と今のブロックの再計算の二つを実行する必要があります。</p>
+<p>このように、データを書き換えると連鎖して次のブロックの再計算が必要になるので、昔のブロックになればなるほど書き換えるためのコストは膨大なものとなります。</p>
+<p>これがトランザクションがブロックが追加されるごとにその信用を増していく仕組みです。</p>
+
+
+<h1>Retargeting of difficulty</h1>
+
+<h1>per 10 minutes</h1>
+<p>Bitcoin automatically adjust</p>
+<p>hashing power, participant</p>
+<p>Compare last 2016 block with theory time(2016 * 10 minutes)</p>
+<P>new difficulty = old difficulty * real time / 20160 minutes</P>
+<p>Limit of difficulty 4 times or quardaroup</p>

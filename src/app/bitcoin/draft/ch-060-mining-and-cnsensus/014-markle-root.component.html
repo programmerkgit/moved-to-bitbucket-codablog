@@ -1,0 +1,24 @@
+<h1>マークルートとハッシュ値</h1>
+<p>次は、ブロックヘッダーに含まれているマークルルートの役割です。</p>
+<ul>
+  <li>Version: ビットコインのバージョン</li>
+  <li>Prev Block Hash: 前のブロックのハッシュ値</li>
+  <li><b>Merkle Root</b>: トランザクションの要約情報</li>
+  <li>Timestamp: ブロックの生成時刻</li>
+  <li><b>Difficulty Target</b>: マイニングの難易度を示す値</li>
+  <li><b>Nonce(ナンス)</b>: マイニングによって得られた値</li>
+</ul>
+<p>マークルルートはトランザクションデータをハッシュ値に要約したものでした。</p>
+<p>つまり、トランザクションデータの内容が少しでも変化するとマークルルートも変わり、ブロックのハッシュ値が変わってしまうことを意味します。</p>
+<p>そのため、一度マイニングしたデータのトランザクションを変更しようとすると、再度ナンスを計算しなければならなくなります。</p>
+<p>これはデータを改ざんするために多大なコストを生じさせる仕組みとして機能します。</p>
+
+
+<h1>Retargeting of difficulty</h1>
+
+<h1>per 10 minutes</h1>
+<p>Bitcoin automatically adjust</p>
+<p>hashing power, participant</p>
+<p>Compare last 2016 block with theory time(2016 * 10 minutes)</p>
+<P>new difficulty = old difficulty * real time / 20160 minutes</P>
+<p>Limit of difficulty 4 times or quardaroup</p>
