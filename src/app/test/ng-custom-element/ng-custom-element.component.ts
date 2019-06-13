@@ -1,4 +1,4 @@
-import { Component, Injector, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, Injector, OnDestroy, OnInit } from '@angular/core';
 import { createCustomElement, NgElement, WithProperties } from '@angular/elements';
 import { HostComponent } from '../host/host.component';
 
@@ -9,10 +9,11 @@ import { HostComponent } from '../host/host.component';
 })
 export class NgCustomElementComponent implements OnInit, OnDestroy {
 
-  element;
+  element: NgElement & WithProperties<HostComponent>;
 
   constructor(
-    private  injector: Injector
+    private  injector: Injector,
+    private elementRef: ElementRef
   ) {
     /*
      The @angular/elements package exports a createCustomElement() API that provides a bridge
@@ -27,16 +28,14 @@ export class NgCustomElementComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     if (this.element) {
-      // document.body.removeChild(this.element);
       this.element.parentNode.removeChild(this.element);
     }
   }
 
   ngOnInit() {
-    const element: NgElement & WithProperties<HostComponent>
-      = document.createElement('new-host') as any;
-    this.element = element;
-    document.body.appendChild(element);
+    this.element = document.createElement('new-host') as any;
+    this.element.abc = 'new-host';
+    this.elementRef.nativeElement.appendChild(this.element);
   }
 
 }
