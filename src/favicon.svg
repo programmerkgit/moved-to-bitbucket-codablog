@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60">
+  <g id="Group_1" data-name="Group 1" transform="translate(-83 -497)">
+    <circle id="Ellipse_5" data-name="Ellipse 5" cx="12.5" cy="12.5" r="12.5" transform="translate(100 515)" fill="#ef578c"/>
+    <circle id="Ellipse_1" data-name="Ellipse 1" cx="12.5" cy="12.5" r="12.5" transform="translate(83 497)" fill="#efdd57"/>
+    <circle id="Ellipse_2" data-name="Ellipse 2" cx="12.5" cy="12.5" r="12.5" transform="translate(83 497)" fill="#efdd57"/>
+    <circle id="Ellipse_3" data-name="Ellipse 3" cx="12.5" cy="12.5" r="12.5" transform="translate(83 497)" fill="#efdd57"/>
+    <circle id="Ellipse_4" data-name="Ellipse 4" cx="12.5" cy="12.5" r="12.5" transform="translate(84 497)" fill="#efdd57"/>
+    <circle id="Ellipse_6" data-name="Ellipse 6" cx="12.5" cy="12.5" r="12.5" transform="translate(118 532)" fill="#5780ef"/>
+    <path id="Intersection_1" data-name="Intersection 1" d="M18,17.385a16.126,16.126,0,0,1,1.751-7.323Q20.582,10,21.43,10C33.066,10,42.5,18.886,42.5,29.846a18.886,18.886,0,0,1-.185,2.638A17.55,17.55,0,0,1,35.149,34,16.889,16.889,0,0,1,18,17.385Z" transform="translate(88 498)" fill="#f74e82"/>
+    <g id="Group_2" data-name="Group 2" transform="translate(-110 -15)">
+      <line id="Line_1" data-name="Line 1" y1="20" x2="21" transform="translate(200.5 544.5)" fill="none" stroke="#707070" stroke-width="6"/>
+      <g id="Path_1" data-name="Path 1" transform="translate(214 516.777)" fill="none">
+        <path d="M16.473,0A16.612,16.612,0,1,1,0,16.611,16.542,16.542,0,0,1,16.473,0Z" stroke="none"/>
+        <path d="M 16.47265625 5.999994277954102 C 10.69801139831543 5.999994277954102 6 10.76021766662598 6 16.611328125 C 6 22.46242904663086 10.69801139831543 27.2226505279541 16.47265625 27.2226505279541 C 22.24730110168457 27.2226505279541 26.9453125 22.46242904663086 26.9453125 16.611328125 C 26.9453125 10.76021766662598 22.24730110168457 5.999994277954102 16.47265625 5.999994277954102 M 16.47265625 -3.814697265625e-06 C 25.57025527954102 -3.814697265625e-06 32.9453125 7.437150955200195 32.9453125 16.611328125 C 32.9453125 25.7855052947998 25.57025527954102 33.22264862060547 16.47265625 33.22264862060547 C 7.375055313110352 33.22264862060547 0 25.7855052947998 0 16.611328125 C 0 7.437150955200195 7.375055313110352 -3.814697265625e-06 16.47265625 -3.814697265625e-06 Z" stroke="none" fill="#707070"/>
+      </g>
+    </g>
+  </g>
+</svg>

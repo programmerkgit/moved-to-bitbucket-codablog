@@ -7,10 +7,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  @Input() links: { url: string, label: string }[] = [
+  @Input() links: { url: string, label?: string }[] = [
     {url: '/', label: 'Home'},
     {url: '/git', label: 'Git'},
-    {url: '/bitcoin', label: 'Bitcoin'}
+    {url: '/bitcoin', label: 'Bitcoin'},
+    {url: '/test', label: 'Test'}
   ];
 
   constructor() {
