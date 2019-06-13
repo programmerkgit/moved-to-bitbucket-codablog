@@ -1,0 +1,26 @@
+:host {
+  background-color: blue;
+  display: inline-block;
+
+  &:before {
+    content: 'bofore-content: host';
+  }
+}
+
+:host(.half) {
+  background-color: red;
+}
+
+
+:host-context(.host-container) {
+  &:after {
+    content: 'host-container-works';
+  }
+}
+
+
+:host-context(.no-container) {
+  &:after {
+    content: 'no-container-works';
+  }
+}
