@@ -1,75 +1,65 @@
-<div class="d-inline-block transform-perspective-100px">
-  perspective works!
-</div>
-
-<div class="d-flex justify-content-between bg-dodger-blue transform-style-preserve-3d transform-perspective-100px">
-  <div class="mx-auto text-white d-inline-block text-center transform-rotate-y-45">
-    dog-cat-foot-play-take-a-walk
-    <div>
-      preserved-line-preserved-line
+<div class="perspective-o-center position-relative perspective-container perspective-1000px">
+  <div class="transform-container" [ngClass]="ngClass">
+    <div class="dice dice-1">
+      <div class="face face-style-front">1</div>
+      <div class="face face-style-back">2</div>
+      <div class="face face-style-right">3</div>
+      <div class="face face- style-left">4</div>
+      <div class="face face-style-top">5</div>
+      <div class="face face-style-bottom">6</div>
     </div>
-  </div>
-</div>
-
-
-<div class="d-flex justify-content-between">
-  <div class="bg-primary text-white d-inline-block perspective-zoom">
-    zoom-text
-  </div>
-</div>
-
-<div class="width-1000px"
-     style="perspective-origin: 150% 150%; perspective: 800px; background: linear-gradient(skyblue, khaki)">
-  <div class="p-300px position-relative"
-       style="transform-style: preserve-3d; perspective: 550px; transform: perspective(0)">
-    <div class="position-absolute width-100px height-100px"
-         style="transform: translateZ(50px); background-color: rgba(90,90,90,.7)">1
+    <div class="dice dice-2">
+      <div class="face face-style-front">1</div>
+      <div class="face face-style-back">2</div>
+      <div class="face face-style-right">3</div>
+      <div class="face face-style-left">4</div>
+      <div class="face face-style-top">5</div>
+      <div class="face face-style-bottom">6</div>
     </div>
-    <div class="position-absolute width-100px height-100px"
-         style="transform: rotateY(180deg) translateZ(50px); background-color: rgba(0, 50, 0, 0.7  )">2
+    <div class="dice dice-3">
+      <div class="face face-style-front">1</div>
+      <div class="face face-style-back">2</div>
+      <div class="face face-style-right">3</div>
+      <div class="face face-style-left">4</div>
+      <div class="face face-style-top">5</div>
+      <div class="face face-style-bottom">6</div>
     </div>
-  </div>
-</div>
-
-
-<div [ngClass]="ngClass" class="width-500px height-500px position-relative perspective-transition"
-     style="background: linear-gradient(skyblue, khaki)">
-  <div class="position-relative t-200px l-300px" (click)="onClick()">
-    <div class="bg-1 d-inline-block position-absolute width-50px height-50px text-center transform-z-50">1</div>
-    <div class="bg-6 d-inline-block position-absolute width-50px height-50px text-center transform-z-m50"
-         style="transform: rotateX(180deg)">6
+    <div class="dice dice-4">
+      <div class="face face-style-front">1</div>
+      <div class="face face-style-back">2</div>
+      <div class="face face-style-right">3</div>
+      <div class="face face-style-left">4</div>
+      <div class="face face-style-top">5</div>
+      <div class="face face-style-bottom">6</div>
     </div>
-    <div class="bg-2 d-inline-block position-absolute width-50px height-50px text-center"
-         style="transform: rotateX(-90deg); transform-origin: bottom">2
+    <div class="dice dice-5">
+      <div class="face face-style-front">1</div>
+      <div class="face face-style-back">2</div>
+      <div class="face face-style-right">3</div>
+      <div class="face face-style-left">4</div>
+      <div class="face face-style-top">5</div>
+      <div class="face face-style-bottom">6</div>
     </div>
-    <div class="bg-5 d-inline-block position-absolute width-50px height-50px text-center"
-         style="transform: rotateX(90deg); transform-origin: top">5
+    <div class="dice dice-6">
+      <div class="face face-style-front">1</div>
+      <div class="face face-style-back">2</div>
+      <div class="face face-style-right">3</div>
+      <div class="face face-style-left">4</div>
+      <div class="face face-style-top">5</div>
+      <div class="face face-style-bottom">6</div>
     </div>
-    <div class="bg-3 d-inline-block position-absolute width-50px height-50px text-center"
-         style="transform: rotateY(-90deg); transform-origin: left">3
+    <div class="dice dice-7">
+      <div class="face face-style-front">1</div>
+      <div class="face face-style-back">2</div>
+      <div class="face face-style-right">3</div>
+      <div class="face face-style-left">4</div>
+      <div class="face face-style-top">5</div>
+      <div class="face face-style-bottom">6</div>
     </div>
-    <div class="bg-4 d-inline-block position-absolute width-50px height-50px text-center"
-         style="transform: rotateY(90deg) rotateX(180deg); transform-origin: right center">4
-    </div>
-  </div>
-  <div class="position-relative t-100px l-200px" (click)="onClick()">
-    <div class="bg-1 d-inline-block position-absolute width-50px height-50px text-center transform-z-50">1</div>
-    <div class="bg-6 d-inline-block position-absolute width-50px height-50px text-center transform-z-m50"
-         style="transform: rotateX(180deg)">6
-    </div>
-    <div class="bg-2 d-inline-block position-absolute width-50px height-50px text-center"
-         style="transform: rotateX(-90deg); transform-origin: bottom">2
-    </div>
-    <div class="bg-5 d-inline-block position-absolute width-50px height-50px text-center"
-         style="transform: rotateX(90deg); transform-origin: top">5
-    </div>
-    <div class="bg-3 d-inline-block position-absolute width-50px height-50px text-center"
-         style="transform: rotateY(-90deg); transform-origin: left">
-      <a routerLink="/">3</a>
-    </div>
-    <div class="bg-4 d-inline-block position-absolute width-50px height-50px text-center"
-         style="transform: rotateY(90deg) rotateX(180deg); transform-origin: right center">
-      <a routerLink="/">4</a>
+    <div class="w-100 d-flex position-absolute b-500px" style="transform: translateZ(-50px)">
+      <div class="mx-auto">
+        <button (click)="zoom()">zoom</button>
+      </div>
     </div>
   </div>
 </div>

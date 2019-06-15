@@ -8,21 +8,17 @@ import { Component, OnInit } from '@angular/core';
 export class PerspectiveComponent implements OnInit {
 
   ngClass = {
-    'perspective-500': true,
-    'perspective-100': false,
-    'p-top-left': false
-  };
-  portClass = {
-    'p-top-left': false
+    'transform-z-100px': true,
+    'transform-z-200px': false,
   };
 
   constructor() {
   }
 
-  onClick() {
-    this.ngClass[ 'p-top-left' ] = !this.ngClass[ 'p-top-left' ];
-    this.ngClass[ 'perspective-100' ] = !this.ngClass[ 'perspective-100' ];
-    this.ngClass[ 'perspective-500' ] = !this.ngClass[ 'perspective-500' ];
+
+  zoom() {
+    this.ngClass[ 'transform-z-100px' ] = !this.ngClass[ 'transform-z-100px' ];
+    this.ngClass[ 'transform-z-200px' ] = !this.ngClass[ 'transform-z-200px' ];
   }
 
   ngOnInit() {
