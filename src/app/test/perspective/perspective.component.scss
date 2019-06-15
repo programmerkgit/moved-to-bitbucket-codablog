@@ -1,0 +1,100 @@
+.transform-perspective-100px {
+  transform: perspective(80px);
+}
+
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.transform-rotate-y-45 {
+  transform: rotateY(45deg);
+}
+
+
+.perspective-zoom {
+  transform: rotateY(45deg);
+
+  &:hover {
+    animation: perspective-zoom 2s ease-in-out forwards;
+  }
+}
+
+@keyframes perspective-zoom {
+  0% {
+    transform: perspective(1000px) rotateY(45deg);
+  }
+
+  100% {
+    transform: perspective(20px) rotateY(45deg);
+  }
+}
+
+
+.transform-z {
+  transform: translateZ(50px);
+}
+
+
+.perspective-transition {
+  transition: all 2s;
+}
+
+.perspective-500 {
+  perspective: 500px;
+  perspective-origin: center;
+}
+
+.p-center {
+
+}
+
+.p-top-left {
+  transform: translate(250px, 250px) scaleX(5) scaleY(5);
+}
+
+
+.perspective-100 {
+  perspective: 100px;
+  perspective-origin: left top;
+}
+
+
+.transform-z-50 {
+  transform: translateZ(50px);
+}
+
+.transform-z-m50 {
+  transform: translateZ(0px);
+}
+
+
+.bg-1 {
+  background-color: rgba(159, 241, 65, 0.51);
+}
+
+.bg-2 {
+  background-color: rgba(130, 192, 163, 0.5);
+}
+
+
+.bg-3 {
+  background-color: rgba(42, 112, 192, 0.5);
+}
+
+
+.bg-4 {
+  background-color: rgba(42, 112, 192, 0.5);
+}
+
+
+.bg-5 {
+  background-color: rgba(192, 35, 125, 0.5);
+}
+
+.bg-6 {
+  background-color: rgba(113, 61, 192, 0.5);
+}
+
+
+

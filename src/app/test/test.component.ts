@@ -7,11 +7,9 @@ const m = Math.random();
   templateUrl: './test.component.html',
   styleUrls: [ './test.component.scss' ],
   host: {
-    'class': 'bg-primary d-inline-block',
-    '[class.text-white]': 'true',
     '[class.p-5]': 'm < 0.9'
   },
-  encapsulation: ViewEncapsulation.Native
+  // encapsulation: ViewEncapsulation.Native
 })
 export class TestComponent implements OnInit {
 

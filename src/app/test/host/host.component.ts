@@ -7,6 +7,7 @@ import { ComponentFactoryComponent } from '../component-factory/component-factor
   templateUrl: './host.component.html',
   styleUrls: [ './host.component.scss' ],
   host: {
+    'class': 'bg-primary d-inline-block',
     'input': 'input-can\'t bind',
     'style': 'border: solid 1px;',
     '[class.half]': 'half'
