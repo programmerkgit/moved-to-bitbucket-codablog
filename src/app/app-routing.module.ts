@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {path: '', loadChildren: () => import('./code-blog/code-blog.module').then(m => m.CodeBlogModule)}
+  {
+    path: '',
+    loadChildren: () => import('./code-blog/code-blog.module').then(m => m.CodeBlogModule)
+  },
 ];
 
 @NgModule({
