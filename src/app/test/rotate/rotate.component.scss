@@ -1,0 +1,37 @@
+
+
+@keyframes rotate-y {
+  0% {
+    transform: rotateY(0deg);
+  }
+
+  100% {
+    transform: rotateY(90deg);
+  }
+}
+
+.rotate {
+  animation: rotate-y 1s linear infinite alternate forwards;
+}
+
+
+@keyframes rotate-y-90 {
+  to {
+    transform: rotateY(90deg);
+  }
+}
+
+.rotate-y-90 {
+  animation: rotate-y-90 1s linear infinite alternate forwards;
+}
+
+
+@keyframes rotate-y-180 {
+  to {
+    transform: rotateY(180deg);
+  }
+}
+
+.rotate-y-180 {
+  animation: rotate-y-180 2s linear infinite alternate forwards;
+}

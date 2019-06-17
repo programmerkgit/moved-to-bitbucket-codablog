@@ -1,0 +1,142 @@
+/* display-position */
+
+/* プロパティーの振り分け */
+
+.face {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  text-align: center;
+  transform-style: preserve-3d;
+}
+
+/* color */
+.face-style-front {
+  background-color: rgba(235, 235, 60, 0.5);
+  color: white;
+  font-size: 60px;
+  line-height: 100px;
+  transform: translateZ(50px);
+  z-index: 1;
+}
+
+.face-style-back {
+  background-color: rgba(60, 235, 60, 0.5);
+  color: white;
+  font-size: 60px;
+  line-height: 100px;
+  transform: rotateY(180deg) translateZ(50px);
+}
+
+
+.face-style-right {
+  background-color: rgba(60, 235, 235, 0.5);
+  color: white;
+  font-size: 60px;
+  line-height: 100px;
+  transform: rotateY(90deg) translateZ(50px);
+}
+
+.face-style-left {
+  background-color: rgba(60, 60, 235, 0.5);
+  color: white;
+  font-size: 60px;
+  line-height: 100px;
+  transform: rotateY(-90deg) translateZ(50px);
+}
+
+.face-style-top {
+  background-color: rgba(235, 60, 235, 0.5);
+  color: white;
+  font-size: 60px;
+  line-height: 100px;
+  transform: rotateX(90deg) translateZ(50px);
+}
+
+.face-style-bottom {
+  background-color: rgba(235, 60, 60, 0.5);
+  color: white;
+  font-size: 60px;
+  line-height: 100px;
+  transform: rotateX(-90deg) translateZ(50px);
+}
+
+
+.perspective-container {
+  width: 100%;
+  height: 1000px;
+}
+
+.transform-container {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: all 1.5s;
+}
+
+.bg-linear {
+  background: linear-gradient(rgba(135, 206, 235, 0.57), rgba(240, 230, 140, 0.61));
+}
+
+.transform-z-100px {
+  transform: translateZ(0px);
+}
+
+.transform-z-200px {
+  transform: translateZ(500px);
+}
+
+.perspective-1000px {
+  perspective: 1000px;
+}
+
+.perspective-o-center {
+  perspective-origin: center;
+}
+
+
+.dice {
+  transform-style: preserve-3d;
+}
+
+.dice-1 {
+  top: 150px;
+  left: 50px;
+  position: relative;
+}
+
+.dice-2 {
+  top: 150px;
+  left: 250px;
+  position: relative;
+}
+
+.dice-3 {
+  top: 350px;
+  left: 250px;
+  position: relative;
+}
+
+.dice-4 {
+  top: 350px;
+  left: 450px;
+  position: relative;
+}
+
+.dice-5 {
+  top: 550px;
+  left: 450px;
+  position: relative;
+}
+
+.dice-6 {
+  top: 550px;
+  left: 650px;
+  position: relative;
+}
+
+.dice-7 {
+  top: 750px;
+  left: 650px;
+  position: relative;
+}
