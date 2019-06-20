@@ -5,6 +5,9 @@
 /tmp
 /out-tsc
 .firebase
+# dot files
+.*
+!.gitignore
 
 # dependencies
 /node_modules

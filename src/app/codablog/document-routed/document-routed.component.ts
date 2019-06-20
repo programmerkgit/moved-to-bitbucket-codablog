@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { createCustomElement } from '@angular/elements';
 import { CustomComponent } from '../custom/custom.component';
-import { DocumentService } from '../../document.service';
+import { DocumentService } from '../../service/document.service';
 import { Document } from '../../Document';
 
 @Component({

@@ -11,7 +11,7 @@ interface ApiServiceConfig {
 }
 
 const config: ApiServiceConfig = {
-  apiBase: environment.apiBase
+  apiBase: environment.apiBase,
 };
 
 const defaultOption = {withCredentials: true};
@@ -19,6 +19,7 @@ const defaultOption = {withCredentials: true};
 
 export abstract class ApiService<T> {
 
+  /* Example api/users. Dont start with slash like '/api' */
   protected abstract _basePath: string;
 
   protected constructor(
