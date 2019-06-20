@@ -1,0 +1,6 @@
+<ul>
+  <li *ngFor="let link of links">
+    <a [routerLink]="link.url"
+       routerLinkActive="active-link">{{link.label || (link.url | titlecase)}}</a>
+  </li>
+</ul>

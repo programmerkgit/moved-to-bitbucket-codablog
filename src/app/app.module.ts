@@ -3,14 +3,19 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CodablogModule } from './codablog/codablog.module';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    /* Basic Modules */
     BrowserModule,
-    AppRoutingModule
+    /* App Routing */
+    AppRoutingModule,
+    /* Modules */
+    CodablogModule
   ],
   providers: [],
   bootstrap: [ AppComponent ]
