@@ -22,5 +22,4 @@ export class DocumentComponent implements OnInit {
     /* TODO set correct document */
     this.sanitizedContent = this.sanitizer.bypassSecurityTrustHtml(this.document.content);
   }
-
 }
