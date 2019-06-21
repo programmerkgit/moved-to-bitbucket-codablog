@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "codablog": {
+    "code-dot-memo": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -102,7 +102,7 @@
         }
       }
     },
-    "codablog-e2e": {
+    "code-dot-memo": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
