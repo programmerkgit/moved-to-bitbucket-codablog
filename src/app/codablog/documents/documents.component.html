@@ -1,8 +1,9 @@
-<ng-container *ngIf="documents$ | async as documents">
+<h3>TODO sort by Latest</h3>
+<ng-container *ngIf="documents$ |async as documents">
     <div class="d-flex flex-wrap">
         <ng-container *ngFor="let document of documents">
             <div class="panel">
-                <app-admin-document-panel [document]="document"></app-admin-document-panel>
+                <app-document-panel [document]="document"></app-document-panel>
             </div>
         </ng-container>
     </div>

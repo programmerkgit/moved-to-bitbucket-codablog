@@ -1,9 +1,12 @@
+.btn {
+  box-shadow: 0 2px 5px 0 black;
+  border-radius: 5px;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+
 @import "ec-styles/utils/color_names";
 @import "ec-styles/utils/colors";
-@import "ec-styles/utils/opacity";
-@import "ec-styles/utils/padding";
-@import "ec-styles/utils/margin";
-@import "ec-styles/utils/position_offset";
-@import "ec-styles/utils/size";
-@import "ec-styles/utils/line";
-@import "ec-styles/utils/utils";

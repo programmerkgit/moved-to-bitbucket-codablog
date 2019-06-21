@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Document } from '../../Document';
+import { Document } from '../../model/document';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({

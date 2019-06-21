@@ -28,7 +28,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules//bootstrap/dist/css/bootstrap.min.css",
+              "node_modules//bootstrap/dist/css/bootstrap-grid.min.css",
+              "node_modules//bootstrap/dist/css/bootstrap-reboot.min.css",
               "node_modules/dot-style/scss/dot-style.min.css"
             ],
             "scripts": []

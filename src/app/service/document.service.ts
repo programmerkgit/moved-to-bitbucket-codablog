@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Document } from '../document';
+import { Document } from '../model/document';
 import { ApiService } from './api-service';
 import { HttpClient } from '@angular/common/http';
 

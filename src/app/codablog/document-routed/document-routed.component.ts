@@ -1,38 +1,33 @@
-import { Component, Injector, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { createCustomElement } from '@angular/elements';
-import { CustomComponent } from '../custom/custom.component';
 import { DocumentService } from '../../service/document.service';
-import { Document } from '../../Document';
+import { Document } from '../../model/document';
 
 @Component({
-  selector: 'app-page-routed',
-  templateUrl: './document-routed.component.html',
-  styleUrls: [ './document-routed.component.scss' ]
+    selector: 'app-page-routed',
+    templateUrl: './document-routed.component.html',
+    styleUrls: [ './document-routed.component.scss' ]
 })
 export class DocumentRoutedComponent implements OnInit {
 
+    document$: Observable<Document>;
 
-  document$: Observable<Document>;
-
-  constructor(
-    private injector: Injector,
-    private activatedRoute: ActivatedRoute,
-    private documentService: DocumentService
-  ) {
-    const customElement = createCustomElement(CustomComponent, {injector});
-    if (document.createElement('custom-element').constructor === HTMLElement) {
-      customElements.define('custom-element', customElement);
+    constructor(
+        private activatedRoute: ActivatedRoute,
+        private documentService: DocumentService
+    ) {
     }
-  }
 
-  getDocument(): Observable<Document> {
-    return this.documentService.getDocument();
-  }
+    getDocument(id): Observable<Document> {
+        return this.documentService.findById(id);
+    }
 
-  ngOnInit() {
-    this.document$ = this.getDocument();
-  }
+    ngOnInit() {
+        this.activatedRoute.paramMap.subscribe(param => {
+            const id = param.get('id');
+            this.document$ = this.getDocument(id);
+        });
+    }
 
 }
