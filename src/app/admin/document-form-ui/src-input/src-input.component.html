@@ -1,0 +1,5 @@
+<input type="file" (change)="fileChange($event)">
+<div *ngIf="src">
+  <img [src]="src" width="220" height="120" style="object-fit: cover">
+</div>
+<ng-content></ng-content>

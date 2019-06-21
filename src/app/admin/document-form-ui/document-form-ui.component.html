@@ -1,0 +1,15 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div>
+        <input formControlName="id" readonly>
+    </div>
+    <div>
+        <input type="text" formControlName="title">
+    </div>
+    <div>
+        <textarea formControlName="content"></textarea>
+    </div>
+    <app-src-input></app-src-input>
+    <div>
+        <button type="submit">更新</button>
+    </div>
+</form>
