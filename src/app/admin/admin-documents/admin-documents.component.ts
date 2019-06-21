@@ -18,9 +18,13 @@ export class AdminDocumentsComponent implements OnInit {
     }
 
     getDocuments(): Observable<Document[]> {
-        return this.documentService.findAll().pipe(
+        return this.documentService.findAll({
+            order: [
+                [ 'createdAt', 'DESC' ]
+            ]
+        }).pipe(
             tap(docs => {
-                console.log(docs)
+                console.log(docs);
             })
         );
     }

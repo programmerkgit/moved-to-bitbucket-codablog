@@ -18,7 +18,7 @@ export class DocumentsComponent implements OnInit {
     }
 
     getDocuments(): Observable<Document[]> {
-        return this.documentService.findAll({scopes: [ 'show' ]});
+        return this.documentService.findAll({scopes: [ 'show' ], order: [ [ 'createdAt', 'DESC' ] ]});
     }
 
     ngOnInit() {
