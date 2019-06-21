@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/codablog",
+    "public": "dist/dot-memo",
     "ignore": [
       "firebase.json",
       "**/.*",

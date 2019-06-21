@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Document } from '../../model/document';
 
 @Component({
     selector: 'app-document-preview',

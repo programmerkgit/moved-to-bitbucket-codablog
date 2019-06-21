@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="239" height="69" viewBox="0 0 239 69">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="239" height="69" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Component_2_1" data-name="Component 2 – 1" clip-path="url(#clip-path)">
+    <rect id="Rectangle_3" data-name="Rectangle 3" width="239" height="69" fill="#fff"/>
+    <path id="Path_6" data-name="Path 6" d="M332.945,504.9,313.28,484.37l2.894-2.894,16.77-15.561" transform="translate(-294 -450.414)" fill="none" stroke="#105b91" stroke-linecap="round" stroke-linejoin="round" stroke-width="10"/>
+    <path id="Path_12" data-name="Path 12" d="M332.945,504.9,313.28,484.37l2.894-2.894,16.77-15.561" transform="translate(538.225 520.398) rotate(180)" fill="none" stroke="#105b91" stroke-linecap="round" stroke-linejoin="round" stroke-width="10"/>
+    <text id="_.memo" data-name=".memo" transform="translate(122 47)" fill="#83be13" font-size="50" font-family="AcuminPro-Bold, Acumin Pro" font-weight="700"><tspan x="-78.275" y="0">.memo</tspan></text>
+  </g>
+</svg>

@@ -1,6 +1,6 @@
 import { Component, Injector } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
-import { CustomComponent } from './codablog/custom/custom.component';
+import { CustomComponent } from './code-dot-memo/custom/custom.component';
 
 @Component({
     selector: 'app-root',

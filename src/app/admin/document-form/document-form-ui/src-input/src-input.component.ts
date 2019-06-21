@@ -18,6 +18,17 @@ export class SrcInputComponent implements OnInit {
     constructor() {
     }
 
+
+    dragover(a) {
+        a.preventDefault();
+    }
+
+    drop(a) {
+        a.preventDefault();
+        this.file = a.dataTransfer.files[ 0 ];
+        this.readFile(this.file);
+    }
+
     fileChange(event) {
         if (event.target) {
             const file = event.target.files[ 0 ];

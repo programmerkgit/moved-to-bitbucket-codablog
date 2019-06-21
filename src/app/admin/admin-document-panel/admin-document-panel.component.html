@@ -1,4 +1,6 @@
 <a [routerLink]="document.id">
-    <h1 class="font-size-20px">{{document.title}}</h1>
-    <img width="220" height="150" alt="document-img" [src]="document.thumbnailUrl" style="object-fit: cover">
+    <div [style.opacity]="document.show ? 1 : 0.5">
+        <h1 class="font-size-20px">{{document.title}}</h1>
+        <img width="220" height="150" alt="document-img" [src]="document.thumbnailUrl" style="object-fit: cover">
+    </div>
 </a>

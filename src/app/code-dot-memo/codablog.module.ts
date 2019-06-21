@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CodablogRoutingModule } from './codablog-routing.module';
+import { CodeDotMemoRoutingModule } from './code-dot-memo-routing.module';
 import { BlogHeaderComponent } from './blog-header/blog-header.component';
-import { CodablogComponent } from './codablog.component';
+import { CodeDotMemo } from './code-dot-memo.component';
 import { DocumentRoutedComponent } from './document-routed/document-routed.component';
 import { CustomComponent } from './custom/custom.component';
 import { DocumentsComponent } from './documents/documents.component';
@@ -13,7 +13,7 @@ import { DocumentComponentModule } from '../share/document-component/document-co
 @NgModule({
     declarations: [
         BlogHeaderComponent,
-        CodablogComponent,
+        CodeDotMemo,
         DocumentRoutedComponent,
         CustomComponent,
         DocumentsComponent,
@@ -21,7 +21,7 @@ import { DocumentComponentModule } from '../share/document-component/document-co
     ],
     imports: [
         CommonModule,
-        CodablogRoutingModule,
+        CodeDotMemoRoutingModule,
         /* share */
         DocumentComponentModule
     ],

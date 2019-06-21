@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DocumentComponent } from '../../codablog/document/document.component';
+import { DocumentComponent } from '../../code-dot-memo/document/document.component';
 
 const shareMdouel = [
     DocumentComponent

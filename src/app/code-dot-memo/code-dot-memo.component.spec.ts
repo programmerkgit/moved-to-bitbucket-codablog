@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CodablogComponent } from './codablog.component';
+import { CodeDotMemo } from './code-dot-memo.component';
 
 describe('CodablogComponent', () => {
-  let component: CodablogComponent;
-  let fixture: ComponentFixture<CodablogComponent>;
+  let component: CodeDotMemo;
+  let fixture: ComponentFixture<CodeDotMemo>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CodablogComponent ]
+      declarations: [ CodeDotMemo ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CodablogComponent);
+    fixture = TestBed.createComponent(CodeDotMemo);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

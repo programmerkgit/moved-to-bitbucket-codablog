@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CodablogComponent } from './codablog.component';
+import { CodeDotMemo } from './code-dot-memo.component';
 import { DocumentRoutedComponent } from './document-routed/document-routed.component';
 import { CustomComponent } from './custom/custom.component';
 import { DocumentsComponent } from './documents/documents.component';
 
 const routes: Routes = [
     {
-        path: 'documents', component: CodablogComponent,
+        path: 'documents', component: CodeDotMemo,
         children: [
             {
                 path: ':id', component: DocumentRoutedComponent
@@ -24,5 +24,5 @@ const routes: Routes = [
     exports: [ RouterModule ],
     entryComponents: [ CustomComponent ]
 })
-export class CodablogRoutingModule {
+export class CodeDotMemoRoutingModule {
 }

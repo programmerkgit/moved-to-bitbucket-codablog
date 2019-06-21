@@ -3,11 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { CodablogModule } from './codablog/codablog.module';
+import { CodablogModule } from './code-dot-memo/codablog.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { SiteModule } from './site/site.module';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
         AngularFireStorageModule,
         /* Modules */
         CodablogModule,
-        HttpClientModule
+        HttpClientModule,
+        SiteModule
 
     ],
     providers: [],
