@@ -1,8 +1,8 @@
-import {AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask} from '@angular/fire/storage';
-import {UploadMetadata} from '@angular/fire/storage/interfaces';
-import {Observable, of} from 'rxjs';
-import {catchError} from 'rxjs/operators';
-import {MessageTemplate} from '../messages/message';
+import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage';
+import { UploadMetadata } from '@angular/fire/storage/interfaces';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { FirebaseStorageError } from './message';
 
 export abstract class FirebaseStorageService {
 
@@ -30,7 +30,7 @@ export abstract class FirebaseStorageService {
         return this.ref(path).getDownloadURL().pipe(
             catchError((err, caught) => {
                 switch (err.code) {
-                    case MessageTemplate.firebaseStorageError.code.objectNotFound:
+                    case FirebaseStorageError.code.objectNotFound:
                         break;
                     default:
                         console.error(err);

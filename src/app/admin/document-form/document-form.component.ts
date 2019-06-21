@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Document } from '../../document';
+import { Document } from '../../model/document';
 import { DocumentService } from '../../service/document.service';
 
 @Component({
@@ -34,7 +34,6 @@ export class DocumentFormComponent implements OnInit {
     }
 
     create(document: Document) {
-        console.log(document.getParams);
         this.documentService.create(document.getParams()).subscribe({
             next: (document) => {
                 this.document = new Document(document);

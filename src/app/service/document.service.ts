@@ -1,24 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { Document } from '../Document';
+import { Document } from '../document';
 import { ApiService } from './api-service';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class DocumentService extends ApiService<Document> {
 
-  protected _basePath = 'document';
+    protected _basePath = 'documents';
 
-  constructor(
-    protected httpClient: HttpClient
-  ) {
-    super(httpClient);
-  }
+    constructor(
+        protected httpClient: HttpClient
+    ) {
+        super(httpClient);
+    }
 
-  getDocument(): Observable<Document> {
-    const document = new Document({title: 'title', content: '<custom-element></custom-element>'});
-    return of(document);
-  }
 }

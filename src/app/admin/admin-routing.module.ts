@@ -3,13 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { DocumentNewComponent } from './document-new/document-new.component';
 import { AdminDocumentsComponent } from './admin-documents/admin-documents.component';
+import { DocumentEditComponent } from './document-edit/document-edit.component';
 
 const routes: Routes = [
     {
         path: '', component: AdminComponent, children: [
             {path: 'documents/new', component: DocumentNewComponent},
-            {path: 'documents/:id'},
+            {path: 'documents/:id', component: DocumentEditComponent},
             {path: 'documents', component: AdminDocumentsComponent},
+            {path: '', redirectTo: 'documents', pathMatch: 'full'}
         ]
     }
 ];

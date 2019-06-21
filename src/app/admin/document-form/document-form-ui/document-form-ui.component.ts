@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
-import { Document } from '../../document';
+import { Document } from '../../../model/document';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SrcInputComponent } from './src-input/src-input.component';
-import { ThumbnailsStorageService } from '../../service/course-storage/thumbnails-storage.service';
+import { ThumbnailsStorageService } from '../../../service/course-storage/thumbnails-storage.service';
 
 @Component({
     selector: 'app-document-form-ui',
@@ -15,6 +15,8 @@ export class DocumentFormUiComponent implements OnInit, OnChanges {
     @Output() submitClicked = new EventEmitter<Document>();
     @ViewChild(SrcInputComponent, {static: true}) srcInput;
 
+
+    src: string | ArrayBuffer;
     formGroup: FormGroup;
 
     constructor(
@@ -24,15 +26,21 @@ export class DocumentFormUiComponent implements OnInit, OnChanges {
     }
 
 
-    fileSave(): Promise<string> {
-        return this.firebaseStorageService.put(this.srcInput.file.name, this.srcInput.file).then(v => {
-            return v.ref.getDownloadURL();
-        });
+    async fileSave(): Promise<string | null> {
+        const file = this.srcInput.file;
+        let url = null;
+        if (file) {
+            const result = await await this.firebaseStorageService.put(file.name, file);
+            url = await result.ref.getDownloadURL();
+        }
+        return url;
     }
 
     onSubmit() {
         this.fileSave().then(thumbnailUrl => {
-            this.formGroup.patchValue({thumbnailUrl});
+            if (thumbnailUrl) {
+                this.formGroup.patchValue({thumbnailUrl});
+            }
             const document = new Document(this.formGroup.getRawValue());
             this.submitClicked.emit(document);
         });
@@ -45,6 +53,7 @@ export class DocumentFormUiComponent implements OnInit, OnChanges {
             content: this.document.content,
             thumbnailUrl: this.document.thumbnailUrl,
         });
+        this.src = this.document.thumbnailUrl;
     }
 
 

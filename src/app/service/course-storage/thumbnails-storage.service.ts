@@ -6,7 +6,7 @@ import { FirebaseStorageService } from './firebase-storage-service';
 @Injectable({
     providedIn: 'root'
 })
-export class CourseStorageService extends FirebaseStorageService {
+export class ThumbnailsStorageService extends FirebaseStorageService {
 
     basePath = 'thumbnails';
 

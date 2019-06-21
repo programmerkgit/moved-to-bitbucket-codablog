@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-src-input',
@@ -10,9 +10,10 @@ export class SrcInputComponent implements OnInit {
 
     reader: FileReader;
 
+
     file: File;
 
-    src;
+    @Input() src: string | ArrayBuffer;
 
     constructor() {
     }
