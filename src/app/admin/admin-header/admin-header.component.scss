@@ -1,0 +1,10 @@
+a:visited {
+  color: inherit;
+}
+
+.nav {
+  display: flex;
+  > *:not(:last-child) {
+    margin-right: 5px;
+  }
+}
