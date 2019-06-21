@@ -14,12 +14,14 @@ import { AdminDocumentPanelComponent } from './admin-document-panel/admin-docume
 import { DocumentPreviewComponent } from './document-preview/document-preview.component';
 import { DocumentComponentModule } from '../share/document-component/document-component.module';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
+import { DraftComponent } from './draft/draft.component';
 
 @NgModule({
     declarations: [
         AdminComponent,
-        DocumentFormComponent, DocumentNewComponent, DocumentFormUiComponent, SrcInputComponent
-        , AdminDocumentsComponent, DocumentEditComponent, AdminDocumentPanelComponent, DocumentPreviewComponent, AdminHeaderComponent
+        DocumentFormComponent, DocumentNewComponent, DocumentFormUiComponent, SrcInputComponent,
+        AdminDocumentsComponent, DocumentEditComponent, AdminDocumentPanelComponent, DocumentPreviewComponent,
+        AdminHeaderComponent, DraftComponent
     ],
     imports: [
         CommonModule,
