@@ -1,0 +1,40 @@
+<h1>How To Create Multiple git accounts</h1>
+<p>ssh-keygen -t rsa -C 'mysq -email address' -f </p>
+<p>-t is a encryption type. rsa is a defacto standard</p>
+<p>-C is a comment</p>
+<p>-f output_keyfile</p>
+
+<h2>Add to Git hub</h2>
+Account - SSH and GPG keys
+
+Enter Key
+
+<h2>Create a config File</h2>
+
+Host 好きな名前
+User git
+Port 22
+HostName github.com
+IdentityFile ~/.ssh/github-private_rsa
+TCPKeepAlive yes
+IdentitiesOnly yes
+
+Host  ホスト名  githubの場合はgithub-{githubアカウント名}を指定
+User  ログインユーザー名  githubの場合はgit
+Port  ポート  デフォルトはPort 22
+HostName  ホストのアドレス、またはIP  githubの場合はHostName github.com
+IdentityFile  利用する秘密鍵を指定する  秘密鍵へのパスを指定
+IdentitiesOnly  持続的接続  yesを指定
+TCPKeepAlive  IdentityFileを利用する場合  yesを指定
+
+
+$ ssh -T github-private
+
+# The authenticity of host github-private can't be established.
+# RSA key fingerprint is ...
+# Are you sure you want to continue connecting (yes/no)?
+
+$ yes
+
+git@[好きな名前]:[github-account-name]/git-test.git
+//git@[Host name]:[Account name]/[Repository name].git
