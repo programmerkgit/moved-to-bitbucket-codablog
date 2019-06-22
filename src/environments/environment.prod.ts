@@ -1,6 +1,6 @@
 export const environment = {
     production: true,
-    apiBase: 'http://localhost:3000',
+    apiBase: 'https://dot-memo-api.prg-latte.xyz/api',
     firebase: {
         apiKey: 'AIzaSyCNPFlsOBP91bDoFM8nIbKz8aZqYgyo5rU',
         authDomain: 'codablog-26957.firebaseapp.com',
