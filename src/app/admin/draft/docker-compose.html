@@ -1,0 +1,23 @@
+<h1>Docker Composeのネットワークモデルのイメージをつかもう</h1>
+<p>Docker Composeのネットワークモデルについて、
+    概念的な説明ではなく図による説明で大まかなイメージを持てる事を目的としてこの記事を書きました。</p>
+<p>チュートリアルようのソースコードもの設定ます</p>
+
+
+<h2>ネットワークモデル</h2>
+<img>
+<p>Dockerのネットワークを考えるとき、ホストマシーン(Dockerを動かしている本体のマシン)のネットワークと、Dockerのネットワークを区別することが重要です。</p>
+<p>ホストのネットワークとDockerのネットワークはそれぞれ独立しており、デフォルトではお互いにアクセスできません。</p>
+<p>ホストマシンのネットワークからコンテナのネットワークにアクセスするには、 <code>--publish</code>などのオプションを与えることでお互いを接続させます。</p>
+
+<h2><code>--publish</code>オプジョン</h2>
+<img>
+<code>--publish</code>オプションは、ホストマシーンのネットワークのportと, Dockerのネットワークのportを接続します。
+<code>docker run --publish=3000:3000</code>コマンドによって、ホスト側のport3000とコンテナのport3000が接続されます。
+ブラウザからlocalhost:3000に接続すると、コンテナに接続できます。
+
+
+<!--
+ Docker compose で --publish, networks, default network, container nameがIPアドレスがわり, (expose)
+ は portを開かない。
+-->

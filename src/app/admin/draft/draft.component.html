@@ -1,58 +1,243 @@
-<div>Icons made by <a
-        href="https://www.freepik.com/?__hstc=57440181.7eb23ed9966df44dcf892efb6205a252.1558879667929.1560540233140.1561168646562.3&__hssc=57440181.1.1561168646562&__hsfp=979714483"
-        title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is
-    licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC
-        3.0 BY</a></div>
+<h1>Dockerネットワークモデルのイメージをつかもう</h1>
+<p>Docker Composeのネットワークモデルについて、
+    概念的な説明ではなく図による説明で大まかなイメージを持てる事を目的としてこの記事を書きました。</p>
+<p>チュートリアルようのソースコードも用意したので、試しに利用してみると理解がスムーズになると思います。</p>
 
+<h2>Dockerネットワークの目的</h2>
+<p>Dockerコンテナのネットワークは、コンテナネットワークモデル(CNM)という仕組みで動いています。</p>
+<p>
+    ネットワークの詳細は複雑ですが、コンテナのネットワークでやりたいことは単純で、
+    宣言的な記述で複数のコンテナとホストマシンとの接続と分離することです。
+</p>
+<p>
+    なのでDockerのネットワークを利用するためには、
+    まずはどうネットワークが分離し、どうネットワークが接続されるのかをイメージするのが大切です。
+</p>
 
-<a href="https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/" target="_blank">Jérôme Petazzoni’s
-    post.</a>
-<ul>
-    <li>可能であるが、推奨できない</li>
-    <li>他の方法。HostのDockerを起動する</li>
-    <li>方法: Docker containerの内部のdocker daemonではなく, Host側のDockerを呼び出す</li>
-</ul>
+<h2>ホストネットワークとDockerネットワークの分離</h2>
+<p>ホストマシンの上でDockerが動いているのですが、ネットワーク空間はホストとDockerで分離されています。</p>
+<img src="../../../assets/1906/network-separeted.svg">
 
+<h2>--publish オプジョン</h2>
+<p>ホストマシンのネットワークからコンテナのネットワークにアクセスするには、publishオプションを利用します。
+<p>
+    publishオプションは、ホストマシーンのネットワークのportとDockerコンテナのportを接続します。
+</p>
+<pre>
+    <code>
+## docker run --publish=ホストのポート:コンテナのポート イメージ
+docker run --publish=3000:3000 myapp
+    </code>
+</pre>
+
+<img src="../../../assets/1906/docker-net-publish.svg">
+<h2>Docker Composeのネットワーク設定の記述</h2>
+<p>Docker Composeでは、コンテナが複数起動します。</p>
+<p>コンテナとホストだけでなく、コンテナとコンテナの関係についてもみていきましょう。</p>
+<p>今、port3000でリクエストを受ける簡単Node.jsサーバー（dockeridkubo/tutorial-app）を用意しました。</p>
+<p>以下の<code>docker-compose.yml</code>ファイルを利用して、2個サーバーを起動してみましょう。</p>
 <div>
-    DockerをInstallしたDocker containerで、bind mount
-    command: -v type=bind /var/run/docker.sock:/var/run/docker.sock
+    <pre>
+        <code>
+version: '2.2'
+services:
+  service1:
+    image: dockeridkubo/tutorial-app
+    container_name: container01
+  service2:
+    image: dockeridkubo/tutorial-app
+    container_name: container02
+        </code>
+    </pre>
 </div>
+<p>2個のサーバーを図で表現すると、次のようになります。</p>
+<img src="../../../assets/1906/same-net.svg">
 <div>
-    DockerをInstallしているDocker image
-    https://hub.docker.com/_/docker
+    <p>コンテナ同士は同じネットワーク空間にいるので、お互いにアクセス可能です。</p>
+    <p>container01からcontainer02のport3000にアクセスするには、<code>http://container02:3000</code>のようにアクセスします。</p>
+    <p><code>ホスト名:protocol</code>と接続先を指定するように、<code>コンテナ名:protocol</code>を使用することでアクセスできます。</p>
 </div>
-<ul>
-    <li>docker images</li>
-    <li>docker ps</li>
-    <li>内部のDocker側からHost側のImageが見える状態である。</li>
-    <li>内部のDocker側からContainerを起動すると、子のContainerではなく兄弟関係のContainerを起動することになる</li>
-</ul>
-<div>内部のDockerが完全にHost側のDockerと独立していて欲しいと感じるかもしれないが、
-    大体のユースケースではこの方法で目的を果たせる有効な方法となります。
-</div>
+<h3>以下の手順で確認してみましょう。</h3>
+以下の<code>docker-compose.yml</code>ファイルを作成。
+<pre>
+    <code>
+version: '2.2'
+services:
+  service1:
+    image: dockeridkubo/tutorial-app
+    container_name: container01
+  service2:
+    image: dockeridkubo/tutorial-app
+    container_name: container02
+    </code>
+</pre>
+<p>コンテナ01からコンテナ02にリクエストを送ってみる。</p>
+<pre>
+<code>
+docker pull dockeridkubo/tutorial-app
+docker-compose up
+docker exec -it container01 bash
+curl -XGET http://container02:3000
+</code>
+</pre>
+<p>以下のレスポンスでネットワークが接続できたことが確認できます。</p>
+<code> &lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;Express&lt;/title&gt;&lt;link rel=&quot;stylesheet&quot;
+    href=&quot;/stylesheets/style.css&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Express&lt;/h1&gt;&lt;p&gt;Welcome to
+    Express&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</code>
+<h2>Docker Composeの --portsオプション</h2>
+<p><code>docker run --publish</code>と同じ設定を, portsによって設定できます。</p>
 <div>
-    <h2>Real Docker in Docker</h2>
-    <div>https://hub.docker.com/_/docker</div>
-    <div>docker run --privileged -d docker:dind</div>
+    <pre>
+        <code>
+version: '2.2'
+services:
+    service1:
+        image: dockeridkubo/tutorial-app
+        container_name: container01
+        ports:
+            - 3100:3000
+    service2:
+        image: dockeridkubo/tutorial-app
+        container_name: container02
+        </code>
+    </pre>
 </div>
-<div>
-    <div>detail: https://github.com/jpetazzo/dind</div>
-    <div>
-        --previleged
-        https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities</div>
-</div>
-<div>
-    https://blog.nijohando.jp/post/docker-in-docker-docker-outside-of-docker/
-</div>
+<p>上の記述では、コンテナのポート3000を公開し、ホストのポート3100とバインドします。</p>
+<p>ネットワーク図は以下のようになります。</p>
+<img src="../../../assets/1906/host-container-3100-3000.svg">
+<h3>docker-compose.ymlを上記の内容に書き換え、以下の手順で確認してみましょう。</h3>
+<pre>
+    <code>
+docker compose-up
+curl -XGET localhost:3100
+    </code>
+</pre>
+<p>レスポンスが正しく返ってくることが確認できます。</p>
 
-参考:
-
-<h1>Docker in Docker?</h1>
-<a>https://itnext.io/docker-in-docker-521958d34efd</a>
-
-
-<div>Nginx</div>
+<h2>Dockerネットワーク内の分割</h2>
+次にnetworksを考えます。一番下に、<code>networks: net01</code>という記述を書きました。
+これで、net01という名前のネットワーク空間ができます。
 <div>
-    謎エラー setsebool -P httpd_can_network_connect true
-    https://unix.stackexchange.com/questions/196907/proxy-nginx-shows-a-bad-gateway-error
+    <pre>
+        <code>
+version: '2.2'
+services:
+    service1:
+        image: dockeridkubo/tutorial-app
+        container_name: container01
+        ports:
+            - 3000:3000
+    service2:
+        image: dockeridkubo/tutorial-app
+        container_name: container02
+    service3:
+        image: dockeridkubo/tutorial-app
+        container_name: container03
+        networks:
+            - net01
+    service4:
+        image: dockeridkubo/tutorial-app
+        container_name: container04
+        networks:
+            - net01
+networks:
+    - net01:
+        </code>
+    </pre>
 </div>
+<p>networksオプション指定することで、net01というネットワーク空間に参加することになります。</p>
+<p><code>networks: net01</code>は、コンテナ内部のネットワーク空間を分割するために指定します。</p>
+<p>図にすると以下のようになります。</p>
+<img src="../../../assets/1906/net01.svg">
+<p>ここで、networksを指定していないコンテナはどうなるかというと、
+    省略していましたが実はdefaultの名前がついている別のネットワーク空間に属しています。</p>
+<p><code>net01</code>と<code>default</code>は並列的なネットワーク空間になります。</p>
+<p>コンテナは同じネットワーク空間同士ではアクセスでき、別のネットワーク空間に属するコンテナにはアクセスできません。</p>
+<img src="../../../assets/1906/networks.svg">
+<h3>動作確認</h3>
+<p>これまで説明した内容を確認してみましょう。</p>
+<p>以下のdocker-compose.ymlを記述してみましょう。</p>
+<div>
+    <pre>
+        <code>
+version: '2.2'
+services:
+    service1:
+        image: dockeridkubo/tutorial-app
+        container_name: container01
+        ports:
+            - 3000:3000
+    service2:
+        image: dockeridkubo/tutorial-app
+        container_name: container02
+    service3:
+        image: dockeridkubo/tutorial-app
+        container_name: container03
+        networks:
+            - net01
+    service4:
+        image: dockeridkubo/tutorial-app
+        container_name: container04
+        networks:
+            - net01
+networks:
+    - net01:
+        </code>
+    </pre>
+</div>
+<p>以下のコマンドを利用してみましょう。</p>
+<pre>
+    <code>
+docker compose-up
+# default側のコンテナに接続
+docker exec -it container01 bash
+curl -XGET http://container02:3000 # => responseあり
+curl -XGET http://container03:3000 # => responseなし
+curl -XGET http://container04:3000 # => responseなし
+# net01側のコンテナに接続
+docker exec -it container03 bash
+curl -XGET http://container01:3000 # => responseなし
+curl -XGET http://container02:3000 # => responseなし
+curl -XGET http://container04:3000 # => responseあり
+    </code>
+</pre>
+<h2>複数のネットワークへの参加</h2>
+<p>複数のネットワークを定義し、一つのコンテナを複数のネットワークに参加させることもできます。</p>
+<div>
+    <pre>
+        <code>
+version: '2.2'
+services:
+    service1:
+        image: dockeridkubo/tutorial-app
+        container_name: container01
+        ports:
+            - 3000:3000
+    service2:
+        image: dockeridkubo/tutorial-app
+        container_name: container02
+        networks:
+            - net01
+    service3:
+        image: dockeridkubo/tutorial-app
+        container_name: container03
+        networks:
+            - net01
+            - net02
+    service4:
+        image: dockeridkubo/tutorial-app
+        container_name: container04
+        networks:
+            - net02
+networks:
+    - net01:
+    - net02:
+        </code>
+    </pre>
+</div>
+<p>図にすると以下のようになります。</p>
+<img src="../../../assets/1906/three-net.svg">
+<h2>終わりに</h2>
+<p>以上がネットワークの基本的な仕組みとなります。</p>
+<p>出来るだけ図で直感的に記述してみました。</p>
+<p>分かりやすいようでしたら、今後もこういう解説記事を上げていこうと思います。</p>

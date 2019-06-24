@@ -1,0 +1,33 @@
+
+:gear:dockerのexposeとpublishの違いを簡単にまとめます。
+
+##publish
+publishは、コンテナのportをホストマシンに公開するために利用します。
+例
+
+```
+#docker run --publish ホストマシンのport:コンテナのport image
+
+docker run nignx_image --publish=80:3000
+```
+
+これで、ホストマシンのport80と、containerのport3000をバインドします。
+##expose
+Exposeは実際にはポートの後悔はせず、ドキュメンテーションの役割を果たします。
+
+>The EXPOSE instruction informs Docker that the container listens on the >specified network ports at runtime. EXPOSE does not make the ports of >the container accessible to the host.
+解説(https://docs.docker.com/engine/reference/builder/#expose)
+
+コンテナ内部で利用されているportのうち、ホストマシンにバインドされる意図のあるportをexposeに記述しておくことで、どのportをpublishすれば良いかが分かりやすくなります。
+
+exposeはコンテナ内部でポートを公開すると理解され記述されているケースが多いですが、exposeの指定をせずともDocker Composeなどで他のコンテナからアクセスは可能です。
+
+
+##Exposeが機能するケース
+
+-Pオプションを利用すると、exposeした全てのportを公開することができます。
+
+```
+docker run nginx_image --expose=80 --expose=443 -P
+```
+=> port80と443をdockerのホストマシンに公開

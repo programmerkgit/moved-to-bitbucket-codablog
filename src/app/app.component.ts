@@ -4,6 +4,7 @@ import { CustomComponent } from './code-dot-memo/custom/custom.component';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
+import { environment } from '../environments/environment';
 
 @Component({
     selector: 'app-root',
@@ -32,12 +33,13 @@ export class AppComponent implements OnDestroy, OnInit {
     }
 
     ngOnInit(): void {
-        this.routerSubscription = this.router.events.pipe(
-            filter(event => event instanceof NavigationEnd),
-        ).subscribe((event: any) => {
-            console.log(event);
-            (<any>window).ga('set', 'page', event.urlAfterRedirects);
-            (<any>window).ga('send', 'pageview');
-        });
+        if (environment.production) {
+            this.routerSubscription = this.router.events.pipe(
+                filter(event => event instanceof NavigationEnd),
+            ).subscribe((event: any) => {
+                (<any>window).ga('set', 'page', event.urlAfterRedirects);
+                (<any>window).ga('send', 'pageview');
+            });
+        }
     }
 }

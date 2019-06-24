@@ -1,0 +1,92 @@
+<div>Icons made by <a
+        href="https://www.freepik.com/?__hstc=57440181.7eb23ed9966df44dcf892efb6205a252.1558879667929.1560540233140.1561168646562.3&__hssc=57440181.1.1561168646562&__hsfp=979714483"
+        title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is
+    licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC
+        3.0 BY</a></div>
+
+
+<a href="https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/" target="_blank">Jérôme Petazzoni’s
+    post.</a>
+<ul>
+    <li>可能であるが、推奨できない</li>
+    <li>他の方法。HostのDockerを起動する</li>
+    <li>方法: Docker containerの内部のdocker daemonではなく, Host側のDockerを呼び出す</li>
+</ul>
+
+<div>
+    DockerをInstallしたDocker containerで、bind mount
+    command: -v type=bind /var/run/docker.sock:/var/run/docker.sock
+</div>
+<div>
+    DockerをInstallしているDocker image
+    https://hub.docker.com/_/docker
+</div>
+<ul>
+    <li>docker images</li>
+    <li>docker ps</li>
+    <li>内部のDocker側からHost側のImageが見える状態である。</li>
+    <li>内部のDocker側からContainerを起動すると、子のContainerではなく兄弟関係のContainerを起動することになる</li>
+</ul>
+<div>内部のDockerが完全にHost側のDockerと独立していて欲しいと感じるかもしれないが、
+    大体のユースケースではこの方法で目的を果たせる有効な方法となります。
+</div>
+<div>
+    <h2>Real Docker in Docker</h2>
+    <div>https://hub.docker.com/_/docker</div>
+    <div>docker run --privileged -d docker:dind</div>
+</div>
+<div>
+    <div>detail: https://github.com/jpetazzo/dind</div>
+    <div>
+        --previleged
+        https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities</div>
+</div>
+<div>
+    https://blog.nijohando.jp/post/docker-in-docker-docker-outside-of-docker/
+</div>
+
+参考:
+
+<h1>Docker in Docker?</h1>
+<a>https://itnext.io/docker-in-docker-521958d34efd</a>
+
+
+<div>Nginx</div>
+<div>
+    謎エラー setsebool -P httpd_can_network_connect true
+    https://unix.stackexchange.com/questions/196907/proxy-nginx-shows-a-bad-gateway-error
+</div>
+
+
+:gear:dockerのexposeとpublishの違いを簡単にまとめます。
+
+##publish
+publishは、コンテナのportをホストマシンに公開するために利用します。
+例
+
+```
+#docker run --publish ホストマシンのport:コンテナのport image
+
+docker run nignx_image --publish=80:3000
+```
+
+これで、ホストマシンのport80と、containerのport3000をバインドします。
+##expose
+Exposeは実際にはポートの後悔はせず、ドキュメンテーションの役割を果たします。
+
+>The EXPOSE instruction informs Docker that the container listens on the >specified network ports at runtime. EXPOSE does not make the ports of >the container accessible to the host.
+解説(https://docs.docker.com/engine/reference/builder/#expose)
+
+コンテナ内部で利用されているportのうち、ホストマシンにバインドされる意図のあるportをexposeに記述しておくことで、どのportをpublishすれば良いかが分かりやすくなります。
+
+exposeはコンテナ内部でポートを公開すると理解され記述されているケースが多いですが、exposeの指定をせずともDocker Composeなどで他のコンテナからアクセスは可能です。
+
+
+##Exposeが機能するケース
+
+-Pオプションを利用すると、exposeした全てのportを公開することができます。
+
+```
+docker run nginx_image --expose=80 --expose=443 -P
+```
+=> port80と443をdockerのホストマシンに公開

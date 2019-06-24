@@ -1,6 +1,6 @@
 <h1>{{document.title}}</h1>
-<div *ngIf="document.thumbnailUrl">
-    <img class="max-width-1000px"
-         [src]="document.thumbnailUrl" style="object-fit: cover">
+<div *ngIf="document.thumbnailUrl" class="d-flex justify-content-center">
+    <img class="thumbnail-img"
+         [src]="document.thumbnailUrl">
 </div>
-<div [innerHTML]="sanitizedContent"></div>
+<div class="py-50px" [innerHTML]="sanitizedContent"></div>
