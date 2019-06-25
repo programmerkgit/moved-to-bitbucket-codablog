@@ -190,13 +190,13 @@ networks:
 <pre>
     <code>
 docker compose-up
-
-docker exec -it container01 bash # default側のコンテナに接続
+# default側のコンテナに接続
+docker exec -it container01 bash
 curl -XGET http://container02:3000 # => responseあり
 curl -XGET http://container03:3000 # => responseなし
 curl -XGET http://container04:3000 # => responseなし
-
-docker exec -it container03 bash  # net01側のコンテナに接続
+# net01側のコンテナに接続
+docker exec -it container03 bash
 curl -XGET http://container01:3000 # => responseなし
 curl -XGET http://container02:3000 # => responseなし
 curl -XGET http://container04:3000 # => responseあり

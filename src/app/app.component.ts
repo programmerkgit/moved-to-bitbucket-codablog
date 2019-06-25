@@ -5,6 +5,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { environment } from '../environments/environment';
+import { AceComponent } from 'ace-module';
 
 @Component({
     selector: 'app-root',
@@ -23,6 +24,10 @@ export class AppComponent implements OnDestroy, OnInit {
         const customElement = createCustomElement(CustomComponent, {injector});
         if (document.createElement('custom-element').constructor === HTMLElement) {
             customElements.define('custom-element', customElement);
+        }
+        const aceElement = createCustomElement(AceComponent, {injector});
+        if (document.createElement('ace-editor').constructor === HTMLElement) {
+            customElements.define('ace-editor', aceElement);
         }
     }
 

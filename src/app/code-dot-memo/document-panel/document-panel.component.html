@@ -1,10 +1,10 @@
 <a [routerLink]="document.id">
- <article>
-     <header>
-         <h1 class="font-size-20px">{{document.title}}</h1>
-     </header>
-     <div>
-         <img width="220" height="150" alt="document-img" [src]="document.thumbnailUrl" style="object-fit: cover">
-     </div>
- </article>
+    <article>
+        <header class="height-80px">
+            <h1 class="font-size-20px">{{document.title.substring(0, 28)}}</h1>
+        </header>
+        <div>
+            <img width="250" height="154" alt="document-img" [src]="document.thumbnailUrl" style="object-fit: cover">
+        </div>
+    </article>
 </a>

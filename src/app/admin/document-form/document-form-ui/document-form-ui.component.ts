@@ -52,7 +52,7 @@ export class DocumentFormUiComponent implements OnInit, OnChanges {
             title: this.document.title,
             content: this.document.content,
             thumbnailUrl: this.document.thumbnailUrl,
-            show: this.document.show,
+            show: this.document.show || false,
         });
         this.src = this.document.thumbnailUrl;
     }

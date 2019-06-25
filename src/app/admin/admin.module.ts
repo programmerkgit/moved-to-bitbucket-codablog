@@ -15,6 +15,7 @@ import { DocumentPreviewComponent } from './document-preview/document-preview.co
 import { DocumentComponentModule } from '../share/document-component/document-component.module';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { DraftComponent } from './draft/draft.component';
+import { AceModule } from 'ace-module';
 
 @NgModule({
     declarations: [
@@ -28,6 +29,7 @@ import { DraftComponent } from './draft/draft.component';
         AdminRoutingModule,
         ReactiveFormsModule,
         DocumentComponentModule,
+        AceModule,
         /* share */
     ],
 })

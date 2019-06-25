@@ -9,6 +9,8 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { SiteModule } from './site/site.module';
+import { CustomComponent } from './code-dot-memo/custom/custom.component';
+import { AceComponent, AceModule } from 'ace-module';
 
 @NgModule({
     declarations: [
@@ -25,12 +27,18 @@ import { SiteModule } from './site/site.module';
         /* Modules */
         CodablogModule,
         HttpClientModule,
-        SiteModule
-
+        SiteModule,
+        AceModule
     ],
     providers: [],
     exports: [],
-    bootstrap: [ AppComponent ]
+    bootstrap: [
+        AppComponent
+    ],
+    entryComponents: [
+        CustomComponent,
+        AceComponent
+    ]
 })
 export class AppModule {
 }
