@@ -11,10 +11,12 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { SiteModule } from './site/site.module';
 import { CustomComponent } from './code-dot-memo/custom/custom.component';
 import { AceComponent, AceModule } from 'ace-module';
+import { UsefulComponent } from './share/icons/useful/useful.component';
+import { ShareModule } from './share/share.module';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
     ],
     imports: [
         /* Basic Modules */
@@ -25,13 +27,16 @@ import { AceComponent, AceModule } from 'ace-module';
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireStorageModule,
         /* Modules */
+        ShareModule,
         CodablogModule,
         HttpClientModule,
         SiteModule,
         AceModule
     ],
     providers: [],
-    exports: [],
+    exports: [
+        UsefulComponent
+    ],
     bootstrap: [
         AppComponent
     ],

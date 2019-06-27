@@ -9,6 +9,8 @@ import { CustomComponent } from './custom/custom.component';
 import { DocumentsComponent } from './documents/documents.component';
 import { DocumentPanelComponent } from './document-panel/document-panel.component';
 import { DocumentComponentModule } from '../share/document-component/document-component.module';
+import { DocumentFeedbacksComponent } from './document/document-feedbacks/document-feedbacks.component';
+import { ShareModule } from '../share/share.module';
 
 @NgModule({
     declarations: [
@@ -17,13 +19,15 @@ import { DocumentComponentModule } from '../share/document-component/document-co
         DocumentRoutedComponent,
         CustomComponent,
         DocumentsComponent,
-        DocumentPanelComponent
+        DocumentPanelComponent,
+        DocumentFeedbacksComponent
     ],
     imports: [
         CommonModule,
         CodeDotMemoRoutingModule,
         /* share */
-        DocumentComponentModule
+        DocumentComponentModule,
+        ShareModule
     ],
     exports: [
         BlogHeaderComponent

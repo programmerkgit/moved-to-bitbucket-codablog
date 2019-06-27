@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CodeDotMemo } from './code-dot-memo.component';
 import { DocumentRoutedComponent } from './document-routed/document-routed.component';
-import { CustomComponent } from './custom/custom.component';
 import { DocumentsComponent } from './documents/documents.component';
 
 const routes: Routes = [
@@ -22,8 +21,7 @@ const routes: Routes = [
 @NgModule({
     imports: [ RouterModule.forChild(routes) ],
     exports: [ RouterModule ],
-    entryComponents: [
-    ]
+    entryComponents: []
 })
 export class CodeDotMemoRoutingModule {
 }
