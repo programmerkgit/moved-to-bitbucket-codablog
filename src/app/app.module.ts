@@ -21,7 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ],
     imports: [
         /* Basic Modules */
-        BrowserModule,
+        BrowserModule.withServerTransition({ appId: 'serverApp' }),
         /* App Routing */
         AppRoutingModule,
         /*Firebase*/
