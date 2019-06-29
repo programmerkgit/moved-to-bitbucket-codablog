@@ -9,10 +9,14 @@ const routes: Routes = [
         path: 'documents', component: DotMemo,
         children: [
             {
-                path: ':id', component: DocumentRoutedComponent
+                path: ':id', component: DocumentRoutedComponent, data: {
+                    page: 'visible'
+                }
             },
             {
-                path: '', component: DocumentsComponent
+                path: '', component: DocumentsComponent, data: {
+                    page: 'disappear'
+                }
             }
         ]
     }

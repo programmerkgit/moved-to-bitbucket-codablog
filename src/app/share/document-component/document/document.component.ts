@@ -11,10 +11,10 @@ export class DocumentComponent implements OnInit, OnChanges {
 
     @Input() document: Document;
 
-    private color = '#909090';
-    private selectedColor = '#013BDA'
+    color = '#909090';
+    selectedColor = '#013BDA';
 
-    private sanitizedContent: SafeHtml;
+    sanitizedContent: SafeHtml;
 
     constructor(
         private sanitizer: DomSanitizer

@@ -18,15 +18,15 @@ export class DocumentFeedBacksComponent implements OnInit {
 
     @Input() documentId: string;
     subscription: Subscription;
-    private counts: { [P in FeedBackType]: number } = {
+    counts: { [P in FeedBackType]: number } = {
         'useful': 0,
         'reliable': 0,
         'like': 0
     };
-    private height = 18;
-    private width = 18;
+    height = 18;
+    width = 18;
 
-    private myFeedBack: { [P in FeedBackType]: FeedBack } = {
+    myFeedBack: { [P in FeedBackType]: FeedBack } = {
         useful: null,
         reliable: null,
         like: null
@@ -72,7 +72,7 @@ export class DocumentFeedBacksComponent implements OnInit {
         }
     }
 
-    private createFeedBack(type: FeedBackType, value): Observable<any> {
+    createFeedBack(type: FeedBackType, value): Observable<any> {
         const feedback = new FeedBack({type: type, value: value, documentId: this.documentId});
         return this.feedBackService.create(feedback).pipe(
             tap((res) => {
@@ -82,7 +82,7 @@ export class DocumentFeedBacksComponent implements OnInit {
         );
     }
 
-    private updateFeedBack(type: FeedBackType, value: number): Observable<any> {
+    updateFeedBack(type: FeedBackType, value: number): Observable<any> {
         const feedback = this.myFeedBack[ type ];
         const prevValue = feedback.value;
         feedback.value = value;
@@ -95,7 +95,7 @@ export class DocumentFeedBacksComponent implements OnInit {
         );
     }
 
-    private deleteFeedBack(type: FeedBackType): Observable<any> {
+    deleteFeedBack(type: FeedBackType): Observable<any> {
         const feedback = this.myFeedBack[ type ];
         const value = feedback.value;
         return this.feedBackService.delete(feedback.id).pipe(
@@ -106,7 +106,7 @@ export class DocumentFeedBacksComponent implements OnInit {
         );
     }
 
-    private feedBackFunction(type: FeedBackType, value: number) {
+    feedBackFunction(type: FeedBackType, value: number) {
         if (this.myFeedBack[ type ] && this.myFeedBack[ type ].value === value) {
             return this.deleteFeedBack(type);
         } else if (this.myFeedBack[ type ] && this.myFeedBack[ type ].value !== value) {
@@ -117,46 +117,46 @@ export class DocumentFeedBacksComponent implements OnInit {
         }
     }
 
-    private usefulUp() {
+    usefulUp() {
         const type = 'useful';
         const value = 1;
         this.feedBackFunction(type, value).subscribe();
     }
 
-    private usefulDown() {
+    usefulDown() {
         const type = 'useful';
         const value = -1;
         this.feedBackFunction(type, value).subscribe();
 
     }
 
-    private likeUp() {
+    likeUp() {
         const type = 'like';
         const value = 1;
         this.feedBackFunction(type, value).subscribe();
     }
 
-    private likeDown() {
+    likeDown() {
         const type = 'like';
         const value = -1;
         this.feedBackFunction(type, value).subscribe();
     }
 
 
-    private reliableUp() {
+    reliableUp() {
         const type = 'reliable';
         const value = 1;
         this.feedBackFunction(type, value).subscribe();
 
     }
 
-    private reliableDown() {
+    reliableDown() {
         const type = 'reliable';
         const value = -1;
         this.feedBackFunction(type, value).subscribe();
     }
 
-    private summarizeFeedBacks(feedBacks: FeedBack[]): number {
+    summarizeFeedBacks(feedBacks: FeedBack[]): number {
         return feedBacks.reduce((value, feedBack) => {
             return value + feedBack.value || 0;
         }, 0);

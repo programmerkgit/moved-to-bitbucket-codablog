@@ -1,7 +1,7 @@
-import {AfterViewInit, Component, HostBinding, OnDestroy, OnInit} from '@angular/core';
-import {animate, state, style, transition, trigger} from '@angular/animations';
-import {fromEvent, Subscription} from 'rxjs';
-import {distinctUntilChanged, filter, map, pairwise, share, throttleTime} from 'rxjs/operators';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { fromEvent, Subscription } from 'rxjs';
+import { distinctUntilChanged, filter, map, pairwise, share, throttleTime } from 'rxjs/operators';
 
 
 enum VisibilityState {
@@ -17,11 +17,11 @@ enum Direction {
 @Component({
     selector: 'app-animated-sticky-header',
     templateUrl: './animated-sticky-header.component.html',
-    styleUrls: ['./animated-sticky-header.component.scss'],
+    styleUrls: [ './animated-sticky-header.component.scss' ],
     animations: [
         trigger('toggle', [
             state('visible', style({
-                opacity: 0.9,
+                opacity: 1,
                 transform: 'translateY(0%)',
             })),
             state('hidden', style({
@@ -29,7 +29,7 @@ enum Direction {
                 transform: 'translateY(-100%)'
             })),
             transition('* => *',
-                [animate('0.3s ease-in')]
+                [ animate('0.3s ease-in') ]
             )
         ])
     ]
@@ -38,8 +38,12 @@ export class AnimatedStickyHeaderComponent implements OnInit, AfterViewInit, OnD
 
 
     isVisible = true;
+    scrollUpSubscription$: Subscription;
+    scrollDownSubscription$: Subscription;
 
-    @HostBinding('@toggled')
+    constructor() {
+    }
+
     get toggle(): VisibilityState {
         if (document.documentElement.scrollTop < 100) {
             return VisibilityState.Visible;
@@ -47,15 +51,12 @@ export class AnimatedStickyHeaderComponent implements OnInit, AfterViewInit, OnD
         return this.isVisible ? VisibilityState.Visible : VisibilityState.Hidden;
     }
 
-    scrollUpSubscription$: Subscription;
-    scrollDownSubscription$: Subscription;
-
     ngAfterViewInit(): void {
         const scroll$ = fromEvent(window, 'scroll').pipe(
             throttleTime(10),
             map(() => document.documentElement.scrollTop),
             pairwise(),
-            map(([y1, y2]): Direction => y1 < y2 ? Direction.Down : Direction.Up),
+            map(([ y1, y2 ]): Direction => y1 < y2 ? Direction.Down : Direction.Up),
             distinctUntilChanged(),
             share()
         );
@@ -72,9 +73,6 @@ export class AnimatedStickyHeaderComponent implements OnInit, AfterViewInit, OnD
     ngOnDestroy(): void {
         this.scrollDownSubscription$.unsubscribe();
         this.scrollUpSubscription$.unsubscribe();
-    }
-
-    constructor() {
     }
 
     ngOnInit() {

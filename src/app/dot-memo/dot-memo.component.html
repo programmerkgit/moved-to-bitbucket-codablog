@@ -1,6 +1,12 @@
-<app-blog-header></app-blog-header>
-<div class="d-flex pt-50px">
-    <div class="mx-auto flex-grow-1 position-relative" style="max-width: 1200px">
-        <router-outlet></router-outlet>
+<div>
+    <app-animated-sticky-header>
+        <app-blog-header></app-blog-header>
+    </app-animated-sticky-header>
+    <div class="d-flex">
+        <div [@animation]="state" class="mx-auto flex-grow-1 position-relative pt-50px"
+             style="max-width: 1200px">
+            <div class="query">query</div>
+            <router-outlet #outlet=outlet></router-outlet>
+        </div>
     </div>
 </div>

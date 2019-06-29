@@ -4,10 +4,12 @@ import { DocumentComponent } from './document/document.component';
 import { DocumentFeedBacksComponent } from './document/document-feedbacks/document-feed-backs.component';
 import { IconShareModule } from '../icon-share.module';
 import { NgMatShareModule } from '../ng-mat-share.module';
+import { AnimatedStickyHeaderComponent } from '../animated-sticky-header/animated-sticky-header.component';
 
 const shareModule = [
     DocumentComponent,
-    DocumentFeedBacksComponent
+    DocumentFeedBacksComponent,
+    AnimatedStickyHeaderComponent
 ];
 
 @NgModule({
