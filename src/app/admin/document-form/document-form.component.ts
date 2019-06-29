@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Document } from '../../model/document';
 import { DocumentService } from '../../service/document.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'app-document-form',
@@ -13,7 +14,9 @@ export class DocumentFormComponent implements OnInit {
     @Input() document: Document;
 
     constructor(
-        private documentService: DocumentService
+        private documentService: DocumentService,
+        private router: Router,
+        private activatedRoute: ActivatedRoute
     ) {
     }
 
@@ -26,7 +29,7 @@ export class DocumentFormComponent implements OnInit {
     }
 
     update(document: Document) {
-        this.documentService.update(document.id, document.getParams()).subscribe({
+        this.documentService.update(document.id, document.dataValues()).subscribe({
             next: (document) => {
                 this.document = new Document(document);
             }
@@ -34,11 +37,21 @@ export class DocumentFormComponent implements OnInit {
     }
 
     create(document: Document) {
-        this.documentService.create(document.getParams()).subscribe({
+        this.documentService.create(document.dataValues()).subscribe({
             next: (document) => {
                 this.document = new Document(document);
             }
         });
+    }
+
+    delete() {
+        if (confirm('削除しますか')) {
+            this.documentService.delete(this.document.id).subscribe({
+                next: () => {
+                    this.router.navigate([ '../' ], {relativeTo: this.activatedRoute});
+                }
+            });
+        }
     }
 
     ngOnInit() {

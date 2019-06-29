@@ -22,10 +22,13 @@
     </div>
     <div>
         <h2>Show</h2>
-        <input type="checkbox" [value]="false" placeholder="show" formControlName="show">
+        <input type="checkbox" placeholder="show" formControlName="show">
     </div>
     <app-src-input [src]="src"></app-src-input>
     <div>
         <button class="btn" type="submit">更新</button>
+    </div>
+    <div>
+        <button class="btn" (click)="deleteClicked.emit()">削除</button>
     </div>
 </form>

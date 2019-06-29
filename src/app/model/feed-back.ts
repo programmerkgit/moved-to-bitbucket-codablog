@@ -1,6 +1,6 @@
 import { User } from './user';
 
-export type FeedBackType = 'reliable' | 'useful'
+export type FeedBackType = 'reliable' | 'useful' | 'like'
 
 export interface FeedBackParams {
     id?: string;

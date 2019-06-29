@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CodeDotMemo } from './code-dot-memo.component';
+import { DocumentFeedBacksComponent } from './document-feed-backs.component';
 
-describe('CodablogComponent', () => {
-  let component: CodeDotMemo;
-  let fixture: ComponentFixture<CodeDotMemo>;
+describe('DocumentFeedbacksComponent', () => {
+  let component: DocumentFeedBacksComponent;
+  let fixture: ComponentFixture<DocumentFeedBacksComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CodeDotMemo ]
+      declarations: [ DocumentFeedBacksComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CodeDotMemo);
+    fixture = TestBed.createComponent(DocumentFeedBacksComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

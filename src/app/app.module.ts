@@ -3,16 +3,17 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { CodablogModule } from './code-dot-memo/codablog.module';
+import { DotMemoModule } from './dot-memo/dot-memo.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { SiteModule } from './site/site.module';
-import { CustomComponent } from './code-dot-memo/custom/custom.component';
+import { CustomComponent } from './dot-memo/custom/custom.component';
 import { AceComponent, AceModule } from 'ace-module';
 import { UsefulComponent } from './share/icons/useful/useful.component';
-import { ShareModule } from './share/share.module';
+import { IconShareModule } from './share/icon-share.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -27,11 +28,12 @@ import { ShareModule } from './share/share.module';
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireStorageModule,
         /* Modules */
-        ShareModule,
-        CodablogModule,
+        IconShareModule,
+        DotMemoModule,
         HttpClientModule,
         SiteModule,
-        AceModule
+        AceModule,
+        BrowserAnimationsModule
     ],
     providers: [],
     exports: [

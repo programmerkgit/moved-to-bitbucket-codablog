@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DocumentFeedbacksComponent } from './document-feedbacks.component';
+import { ReliableComponent } from './reliable.component';
 
-describe('DocumentFeedbacksComponent', () => {
-  let component: DocumentFeedbacksComponent;
-  let fixture: ComponentFixture<DocumentFeedbacksComponent>;
+describe('ReliableComponent', () => {
+  let component: ReliableComponent;
+  let fixture: ComponentFixture<ReliableComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DocumentFeedbacksComponent ]
+      declarations: [ ReliableComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DocumentFeedbacksComponent);
+    fixture = TestBed.createComponent(ReliableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

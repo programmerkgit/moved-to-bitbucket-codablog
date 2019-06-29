@@ -2,7 +2,7 @@
     <div [style.opacity]="document.show ? 1 : 0.5">
         <article>
             <header class="height-80px">
-                <h1 class="font-size-20px">{{document.title.substring(0, 28)}}</h1>
+                <h1 class="font-size-20px">{{document?.title?.substring(0, 28)}}</h1>
             </header>
             <div>
                 <img width="250" height="154" alt="document-img" [src]="document.thumbnailUrl" style="object-fit: cover">

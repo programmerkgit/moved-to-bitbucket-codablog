@@ -1,0 +1,165 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { FeedBackService } from '../../../../service/feed-back.service';
+import { FeedBack, FeedBackType } from '../../../../model/feed-back';
+import { DocumentService } from '../../../../service/document.service';
+import { tap } from 'rxjs/operators';
+import { Observable, Subscription } from 'rxjs';
+import { ApiAuthService } from '../../../../service/api-auth.service';
+
+@Component({
+    selector: 'app-document-feed-backs',
+    templateUrl: './document-feed-backs.component.html',
+    styleUrls: [ './document-feed-backs.component.scss' ]
+})
+export class DocumentFeedBacksComponent implements OnInit {
+
+    @Input() color: string;
+    @Input() selectedColor: string;
+
+    @Input() documentId: string;
+    subscription: Subscription;
+    private counts: { [P in FeedBackType]: number } = {
+        'useful': 0,
+        'reliable': 0,
+        'like': 0
+    };
+    private height = 18;
+    private width = 18;
+
+    private myFeedBack: { [P in FeedBackType]: FeedBack } = {
+        useful: null,
+        reliable: null,
+        like: null
+    };
+
+    constructor(
+        private feedBackService: FeedBackService,
+        private documentService: DocumentService,
+        private apiAuthService: ApiAuthService
+    ) {
+    }
+
+    getUser() {
+        return this.apiAuthService.user$;
+    }
+
+    ngOnInit() {
+        this.documentService.findById(this.documentId, {scopes: [ 'usefulFeedBacks', 'reliableFeedBacks', 'likeFeedBacks' ]}).pipe(
+            tap(document => {
+                this.counts[ 'useful' ] = this.summarizeFeedBacks(document.usefulFeedBacks);
+                this.counts[ 'reliable' ] = this.summarizeFeedBacks(document.reliableFeedBacks);
+                this.counts[ 'like' ] = this.summarizeFeedBacks(document.likeFeedBacks);
+            }),
+            tap(document => {
+                this.subscription = this.apiAuthService.user$.subscribe(user => {
+                    this.myFeedBack[ 'useful' ] = document.usefulFeedBacks.find(feedback => {
+                        return feedback.userId === user.id;
+                    });
+                    this.myFeedBack[ 'reliable' ] = document.reliableFeedBacks.find(feedback => {
+                        return feedback.userId === user.id;
+                    });
+                    this.myFeedBack[ 'like' ] = document.likeFeedBacks.find(feedback => {
+                        return feedback.userId === user.id;
+                    });
+                });
+            })
+        ).subscribe();
+    }
+
+    iconClick(type: FeedBackType) {
+        if (this.myFeedBack[ type ]) {
+            this.deleteFeedBack(type).subscribe();
+        }
+    }
+
+    private createFeedBack(type: FeedBackType, value): Observable<any> {
+        const feedback = new FeedBack({type: type, value: value, documentId: this.documentId});
+        return this.feedBackService.create(feedback).pipe(
+            tap((res) => {
+                this.counts[ type ] += value;
+                this.myFeedBack[ type ] = res;
+            })
+        );
+    }
+
+    private updateFeedBack(type: FeedBackType, value: number): Observable<any> {
+        const feedback = this.myFeedBack[ type ];
+        const prevValue = feedback.value;
+        feedback.value = value;
+        return this.feedBackService.update(feedback.id, feedback).pipe(
+            tap(feedback => {
+                this.counts[ type ] -= prevValue;
+                this.counts[ type ] += feedback.value;
+                this.myFeedBack[ type ] = feedback;
+            })
+        );
+    }
+
+    private deleteFeedBack(type: FeedBackType): Observable<any> {
+        const feedback = this.myFeedBack[ type ];
+        const value = feedback.value;
+        return this.feedBackService.delete(feedback.id).pipe(
+            tap(result => {
+                this.counts[ type ] -= value;
+                this.myFeedBack[ type ] = null;
+            })
+        );
+    }
+
+    private feedBackFunction(type: FeedBackType, value: number) {
+        if (this.myFeedBack[ type ] && this.myFeedBack[ type ].value === value) {
+            return this.deleteFeedBack(type);
+        } else if (this.myFeedBack[ type ] && this.myFeedBack[ type ].value !== value) {
+            return this.updateFeedBack(type, value);
+        } else if (!this.myFeedBack[ type ]) {
+            return this.createFeedBack(type, value);
+        } else {
+        }
+    }
+
+    private usefulUp() {
+        const type = 'useful';
+        const value = 1;
+        this.feedBackFunction(type, value).subscribe();
+    }
+
+    private usefulDown() {
+        const type = 'useful';
+        const value = -1;
+        this.feedBackFunction(type, value).subscribe();
+
+    }
+
+    private likeUp() {
+        const type = 'like';
+        const value = 1;
+        this.feedBackFunction(type, value).subscribe();
+    }
+
+    private likeDown() {
+        const type = 'like';
+        const value = -1;
+        this.feedBackFunction(type, value).subscribe();
+    }
+
+
+    private reliableUp() {
+        const type = 'reliable';
+        const value = 1;
+        this.feedBackFunction(type, value).subscribe();
+
+    }
+
+    private reliableDown() {
+        const type = 'reliable';
+        const value = -1;
+        this.feedBackFunction(type, value).subscribe();
+    }
+
+    private summarizeFeedBacks(feedBacks: FeedBack[]): number {
+        return feedBacks.reduce((value, feedBack) => {
+            return value + feedBack.value || 0;
+        }, 0);
+    }
+
+}

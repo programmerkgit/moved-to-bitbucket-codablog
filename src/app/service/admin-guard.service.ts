@@ -19,7 +19,7 @@ export class AdminGuardService implements CanLoad, CanActivate {
     canLoad(route: Route): boolean | Observable<boolean> | Promise<boolean> {
         return this.apiAuthService.checkLogin().pipe(
             map(res => {
-                return res.result;
+                return res.user.isAdmin();
             }),
             tap(result => {
                 if (!result) {

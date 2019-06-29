@@ -1,20 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DocumentComponent } from '../../code-dot-memo/document/document.component';
+import { DocumentComponent } from './document/document.component';
+import { DocumentFeedBacksComponent } from './document/document-feedbacks/document-feed-backs.component';
+import { IconShareModule } from '../icon-share.module';
+import { NgMatShareModule } from '../ng-mat-share.module';
 
-const shareMdouel = [
-    DocumentComponent
+const shareModule = [
+    DocumentComponent,
+    DocumentFeedBacksComponent
 ];
 
 @NgModule({
     declarations: [
-        ...shareMdouel
+        ...shareModule
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        IconShareModule,
+        NgMatShareModule
     ],
     exports: [
-        ...shareMdouel
+        ...shareModule
     ]
 })
 export class DocumentComponentModule {

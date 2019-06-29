@@ -13,6 +13,7 @@ export class DocumentFormUiComponent implements OnInit, OnChanges {
 
     @Input() document: Document;
     @Output() submitClicked = new EventEmitter<Document>();
+    @Output() deleteClicked = new EventEmitter();
     @ViewChild(SrcInputComponent, {static: true}) srcInput;
 
 
@@ -45,14 +46,14 @@ export class DocumentFormUiComponent implements OnInit, OnChanges {
             this.submitClicked.emit(document);
         });
     }
-
+f
     ngOnChanges(changes: SimpleChanges): void {
         this.formGroup = this.fb.group({
             id: this.document.id,
             title: this.document.title,
             content: this.document.content,
             thumbnailUrl: this.document.thumbnailUrl,
-            show: this.document.show || false,
+            show: this.document.show,
         });
         this.src = this.document.thumbnailUrl;
     }

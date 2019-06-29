@@ -1,11 +1,12 @@
 import { Component, Injector, OnDestroy, OnInit } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
-import { CustomComponent } from './code-dot-memo/custom/custom.component';
+import { CustomComponent } from './dot-memo/custom/custom.component';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { environment } from '../environments/environment';
 import { AceComponent } from 'ace-module';
+import { ApiAuthService } from './service/api-auth.service';
 
 @Component({
     selector: 'app-root',
@@ -14,12 +15,12 @@ import { AceComponent } from 'ace-module';
 })
 export class AppComponent implements OnDestroy, OnInit {
     title = 'app';
-    noindex = true;
     routerSubscription: Subscription;
 
     constructor(
         private injector: Injector,
-        private router: Router
+        private router: Router,
+        private apiAuthService: ApiAuthService
     ) {
         const customElement = createCustomElement(CustomComponent, {injector});
         if (document.createElement('custom-element').constructor === HTMLElement) {
@@ -38,6 +39,7 @@ export class AppComponent implements OnDestroy, OnInit {
     }
 
     ngOnInit(): void {
+        this.apiAuthService.setUser().subscribe();
         if (environment.production) {
             this.routerSubscription = this.router.events.pipe(
                 filter(event => event instanceof NavigationEnd),

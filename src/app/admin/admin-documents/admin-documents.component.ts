@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Document } from '../../model/document';
 import { DocumentService } from '../../service/document.service';
-import { tap } from 'rxjs/operators';
 
 @Component({
     selector: 'app-admin-documents',
@@ -22,11 +21,7 @@ export class AdminDocumentsComponent implements OnInit {
             order: [
                 [ 'createdAt', 'DESC' ]
             ]
-        }).pipe(
-            tap(docs => {
-                console.log(docs);
-            })
-        );
+        });
     }
 
     ngOnInit() {

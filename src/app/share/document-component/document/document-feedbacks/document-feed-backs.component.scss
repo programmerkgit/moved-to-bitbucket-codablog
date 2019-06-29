@@ -1,0 +1,14 @@
+.color {
+  color: #dbdbdb;
+}
+
+
+.transition {
+  transition: all 0.2s;
+}
+
+:host ::ng-deep {
+  .transition {
+    transition: all 0.2s;
+  }
+}

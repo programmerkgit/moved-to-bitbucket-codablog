@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { SVG } from '../svg';
 
 @Component({
-  selector: 'app-useful',
-  templateUrl: './useful.component.html',
-  styleUrls: ['./useful.component.scss']
+    selector: 'app-useful',
+    templateUrl: './useful.component.html',
+    styleUrls: [ './useful.component.scss' ]
 })
-export class UsefulComponent implements OnInit {
+export class UsefulComponent extends SVG implements OnInit {
 
-  constructor() { }
+    constructor() {
+        super();
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
 }

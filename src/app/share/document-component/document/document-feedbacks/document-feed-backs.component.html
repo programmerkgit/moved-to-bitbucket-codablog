@@ -1,0 +1,49 @@
+<div class="d-flex justify-content-between min-width-100px align-content-center">
+    <div class="d-flex flex-column align-content-center cursor-pointer">
+        <div class="d-flex justify-content-center" matTooltip="役立つ!" matTooltipPosition="above">
+            <app-up (click)="usefulUp()" [color]="myFeedBack?.useful?.value === 1 ? selectedColor : color" height="20"
+                    width="20"></app-up>
+        </div>
+        <div class="d-flex flex-column align-content-center" [class.cursor-pointer]="myFeedBack.useful" (click)="iconClick('useful')">
+            <app-useful [color]="myFeedBack.useful ? selectedColor : color" [height]="height"
+                        [width]="width"></app-useful>
+            <div class="text-align-center line-height-16px font-size-14px transition"
+                 [style.color]="myFeedBack.useful ? selectedColor : color">{{counts.useful}}</div>
+        </div>
+        <div class="d-flex justify-content-center cursor-pointer" matTooltip="役に立たない!" matTooltipPosition="above">
+            <app-down (click)="usefulDown()" [color]="myFeedBack?.useful?.value === -1 ? selectedColor : color"
+                      height="20" width="20"></app-down>
+        </div>
+    </div>
+    <div class="d-flex flex-column align-content-center">
+        <div class="d-flex justify-content-center cursor-pointer" matTooltip="好き!" matTooltipPosition="above">
+            <app-up (click)="likeUp()" [color]="myFeedBack?.like?.value === 1 ? selectedColor : color" height="20"
+                    width="20"></app-up>
+        </div>
+        <div class="d-flex flex-column align-content-center" [class.cursor-pointer]="myFeedBack.like" (click)="iconClick('like')">
+            <app-like [color]="myFeedBack.like ? selectedColor : color" [height]="height" [width]="width"></app-like>
+            <div class="text-align-center line-height-16px font-size-14px transition"
+                 [style.color]="myFeedBack.like ? selectedColor : color">{{counts.like}}</div>
+        </div>
+        <div class="d-flex justify-content-center cursor-pointer" matTooltip="嫌い！" matTooltipPosition="above">
+            <app-down (click)="likeDown()" [color]="myFeedBack?.like?.value === -1 ? selectedColor : color" height="20"
+                      width="20"></app-down>
+        </div>
+    </div>
+    <div class="d-flex flex-column align-content-center">
+        <div class="d-flex justify-content-center cursor-pointer" matTooltip="正しい!" matTooltipPosition="above">
+            <app-up (click)="reliableUp()" [color]="myFeedBack?.reliable?.value === 1 ? selectedColor : color"
+                    height="20" width="20"></app-up>
+        </div>
+        <div class="d-flex flex-column align-content-center" [class.cursor-pointer]="myFeedBack.reliable" (click)="iconClick('reliable')">
+            <app-reliable [color]="myFeedBack.reliable ? selectedColor : color" [height]="height"
+                          [width]="width"></app-reliable>
+            <div class="text-align-center line-height-16px font-size-14px transition"
+                 [style.color]="myFeedBack.reliable ? selectedColor : color">{{counts.reliable}}</div>
+        </div>
+        <div class="d-flex justify-content-center cursor-pointer" matTooltip="間違ってる!" matTooltipPosition="above">
+            <app-down (click)="reliableDown()" [color]="myFeedBack?.reliable?.value === -1 ? selectedColor : color"
+                      height="20" width="20"></app-down>
+        </div>
+    </div>
+</div>

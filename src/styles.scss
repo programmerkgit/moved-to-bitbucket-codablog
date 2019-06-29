@@ -10,3 +10,6 @@
 
 @import "ec-styles/utils/color_names";
 @import "ec-styles/utils/colors";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

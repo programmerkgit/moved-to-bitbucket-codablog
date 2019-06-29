@@ -16,6 +16,7 @@ import { DocumentComponentModule } from '../share/document-component/document-co
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { DraftComponent } from './draft/draft.component';
 import { AceModule } from 'ace-module';
+import { IconShareModule } from '../share/icon-share.module';
 
 @NgModule({
     declarations: [
@@ -30,6 +31,7 @@ import { AceModule } from 'ace-module';
         ReactiveFormsModule,
         DocumentComponentModule,
         AceModule,
+        IconShareModule
         /* share */
     ],
 })

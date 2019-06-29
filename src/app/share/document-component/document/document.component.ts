@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Document } from '../../model/document';
+import { Document } from '../../../model/document';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
@@ -11,7 +11,10 @@ export class DocumentComponent implements OnInit, OnChanges {
 
     @Input() document: Document;
 
-    sanitizedContent: SafeHtml;
+    private color = '#909090';
+    private selectedColor = '#013BDA'
+
+    private sanitizedContent: SafeHtml;
 
     constructor(
         private sanitizer: DomSanitizer

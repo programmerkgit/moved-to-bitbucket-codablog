@@ -1,22 +1,13 @@
-export class Document {
-    id: string;
-    title: string;
-    content: string;
-    thumbnailUrl: string;
-    show: boolean;
+import { FeedBack } from './feed-back';
+import { Model } from './model';
 
-    constructor(values?: { title?: string, content?: string, id?: string, hidden?: boolean }) {
-        Object.keys(values).forEach(key => {
-            this[ key ] = values[ key ];
-        });
-    }
 
-    getParams() {
-        return {
-            title: this.title,
-            content: this.content,
-            thumbnailUrl: this.thumbnailUrl,
-            show: this.show
-        };
-    }
+export class Document extends Model<Document> {
+    title?: string;
+    content?: string;
+    thumbnailUrl?: string;
+    show?: boolean;
+    usefulFeedBacks: FeedBack[];
+    reliableFeedBacks: FeedBack[];
+    likeFeedBacks: FeedBack[];
 }

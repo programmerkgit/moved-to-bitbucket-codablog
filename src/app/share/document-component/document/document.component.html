@@ -1,0 +1,12 @@
+<h1>{{document?.title}}</h1>
+<div *ngIf="document.thumbnailUrl" class="d-flex justify-content-center">
+    <img class="thumbnail-img"
+         [src]="document.thumbnailUrl">
+</div>
+<div class="py-50px" [innerHTML]="sanitizedContent"></div>
+<div class="b-30px position-sticky d-flex justify-content-end">
+    <div class="mr-30px">
+        <app-document-feed-backs [selectedColor]="selectedColor" [color]="color"
+                                 [documentId]="document.id"></app-document-feed-backs>
+    </div>
+</div>
