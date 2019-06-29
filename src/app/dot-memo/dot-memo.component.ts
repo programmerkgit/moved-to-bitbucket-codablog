@@ -1,36 +1,80 @@
-import { Component, OnInit } from '@angular/core';
-import { NavigationStart, Router, RouterOutlet } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { animate, group, query, style, transition, trigger } from '@angular/animations';
 
 const animation =
     trigger('animation', [
-        transition('visible <=> disappear', [
+        transition('documents => document', [
             query(':enter, :leave', [
                 style({
-                    position: 'absolute'
+                    position: 'absolute',
+                    width: '100%',
                 })
             ]),
             query(':enter', [
-                style({left: '-100%'})
+                style({
+                    left: '100%',
+                    opacity: '0'
+                })
             ]),
             query(':leave', [
                 style({
-                    transform: 'scale(1, 1)',
+                    left: '0%',
+                    opacity: '1'
                 })
             ]),
             group([
                 query(':leave', [
-                    animate('500ms ease-out', style({
-                        transform: 'scale(0, 0)'
+                    animate('500ms ease', style({
+                        left: '-100%',
+                        opacity: '0'
                     }))
                 ]),
                 query(':enter', [
-                    animate('500ms ease-out', style({
+                    animate('500ms ease', style({
                         left: '0%',
                     }))
+                ]),
+                query(':enter', [
+                    animate('500ms ease', style({
+                        opacity: '1'
+                    }))
                 ])
+            ]),
+        ]),
+        transition('document => documents', [
+            query(':enter, :leave', [
+                style({
+                    position: 'absolute',
+                    width: '100%',
+                })
+            ]),
+            query(':enter', [
+                style({
+                    left: '-100%',
+                    opacity: '0'
+                })
+            ]),
+            query(':leave', [
+                style({
+                    left: '0%',
+                    opacity: '1'
+                })
+            ]),
+            group([
+                query(':leave', [
+                    animate('500ms ease', style({
+                        left: '100%',
+                        opacity: '0'
+                    }))
+                ]),
+                query(':enter', [
+                    animate('500ms ease', style({
+                        left: '0%',
+                        opacity: '1'
+                    }))
+                ]),
             ]),
         ])
     ]);
@@ -41,7 +85,7 @@ const animation =
     styleUrls: [ './dot-memo.component.scss' ],
     animations: [ animation ]
 })
-export class DotMemo implements OnInit {
+export class DotMemo implements OnInit, OnDestroy {
 
     routerSubscription: Subscription;
     state = 'visible';
@@ -52,12 +96,7 @@ export class DotMemo implements OnInit {
     }
 
     prepareRoute(outlet: RouterOutlet) {
-        // return outlet && outlet.activatedRouteData && outlet.activatedRouteData[ 'page' ];
-        return this.state;
-    }
-
-    out(outlet: RouterOutlet) {
-        return this.state;
+        return outlet && outlet.activatedRouteData && outlet.activatedRouteData[ 'page' ];
     }
 
     ngOnDestroy(): void {
@@ -67,14 +106,6 @@ export class DotMemo implements OnInit {
     }
 
     ngOnInit() {
-        this.routerSubscription = this.router.events.pipe(
-            filter(event => event instanceof NavigationStart),
-        ).subscribe((event: any) => {
-            this.state = this.state === 'visible' ? 'disappear' : 'visible';
-        });
     }
 
-    scrollToTop() {
-        window.scrollTo({top: 0});
-    }
 }

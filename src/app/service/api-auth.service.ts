@@ -47,7 +47,7 @@ export class ApiAuthService {
     anonymousSignUp(): Observable<AnonoymousSignUp> {
         return this.httpClient.post<AnonoymousSignUp>(this.urlBase + '/anonymous-sign-up', {}, {withCredentials: true}).pipe(
             tap(res => {
-                this.emitUser(res.user);
+                this.emitUser(new User(res.user));
             })
         );
     }
@@ -55,7 +55,7 @@ export class ApiAuthService {
     login(values: { email: string, password: string }): Observable<Login> {
         return this.httpClient.post<Login>(this.urlBase + '/login', values, {withCredentials: true}).pipe(
             tap(res => {
-                this.emitUser(res.user);
+                this.emitUser(new User(res.user));
             }),
             map(res => {
                 res.user = new User(res.user);
@@ -67,7 +67,7 @@ export class ApiAuthService {
     checkLogin(): Observable<CheckLogin> {
         return this.httpClient.get<CheckLogin>(this.urlBase + '/check-login', {withCredentials: true}).pipe(
             tap(res => {
-                this.emitUser(res.user);
+                this.emitUser(new User(res.user));
             }),
             map(res => {
                 res.user = new User(res.user);

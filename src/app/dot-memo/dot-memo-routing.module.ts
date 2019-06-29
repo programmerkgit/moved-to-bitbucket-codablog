@@ -10,12 +10,12 @@ const routes: Routes = [
         children: [
             {
                 path: ':id', component: DocumentRoutedComponent, data: {
-                    page: 'visible'
+                    page: 'document'
                 }
             },
             {
                 path: '', component: DocumentsComponent, data: {
-                    page: 'disappear'
+                    page: 'documents'
                 }
             }
         ]

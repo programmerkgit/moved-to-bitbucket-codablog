@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiAuthService } from '../../service/api-auth.service';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
     selector: 'app-blog-header',
@@ -8,7 +11,11 @@ import { Component, OnInit } from '@angular/core';
 export class BlogHeaderComponent implements OnInit {
 
 
-    constructor() {
+    isAdmin$: Observable<boolean>;
+
+    constructor(
+        private apiAuthService: ApiAuthService
+    ) {
     }
 
     scrollToTop() {
@@ -16,6 +23,15 @@ export class BlogHeaderComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.isAdmin$ = this.apiAuthService.user$.pipe(
+            map(user => {
+                if (user) {
+                    return user.isAdmin();
+                } else {
+                    return false;
+                }
+            })
+        );
     }
 
 }
