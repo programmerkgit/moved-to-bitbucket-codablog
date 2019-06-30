@@ -1,10 +1,24 @@
-<h3>最新の記事</h3>
-<ng-container *ngIf="documents$ |async as documents">
-    <div class="d-flex flex-wrap">
-        <ng-container *ngFor="let document of documents">
-            <div class="panel">
-                <app-document-panel [document]="document"></app-document-panel>
-            </div>
-        </ng-container>
+<ng-container *ngIf="blogs$ |async as documents">
+    <div class="mb-50px">
+        <h3>最新の記事</h3>
+        <div class="d-flex flex-wrap">
+            <ng-container *ngFor="let document of documents">
+                <div class="panel">
+                    <app-document-panel [document]="document"></app-document-panel>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="simples$ |async as documents">
+    <div class="mb-50px">
+        <h3>簡易記事</h3>
+        <div class="d-flex flex-wrap">
+            <ng-container *ngFor="let document of documents">
+                <div class="panel">
+                    <app-docuemnt-panel-simple [document]="document"></app-docuemnt-panel-simple>
+                </div>
+            </ng-container>
+        </div>
     </div>
 </ng-container>

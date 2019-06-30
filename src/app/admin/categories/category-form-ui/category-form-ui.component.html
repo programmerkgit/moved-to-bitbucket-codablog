@@ -1,0 +1,6 @@
+<form [formGroup]="formGroup" (ngSubmit)="save()">
+    <input placeholder="id" type="text" formControlName="id" readonly>
+    <input placeholder="name" type="text" required formControlName="name">
+    <input placeholder="type" type="text" formControlName="type">
+    <button class="btn" type="submit" [disabled]="formGroup.invalid">保存</button>
+</form>

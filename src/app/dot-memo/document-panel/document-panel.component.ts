@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Document } from '../../model/document';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-document-panel',
@@ -10,10 +9,21 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 export class DocumentPanelComponent implements OnInit {
 
     @Input() document: Document;
+    width = 16;
+    height = 16;
+    iconColor = '#909090';
 
+    constructor() {
+    }
 
-    constructor(
-    ) {
+    get documentTitle() {
+        if (!this.document.title) {
+            return '';
+        } else if (this.document.title.length < 45) {
+            return this.document.title;
+        } else {
+            return this.document.title.substring(0, 45) + '...';
+        }
     }
 
     ngOnInit() {

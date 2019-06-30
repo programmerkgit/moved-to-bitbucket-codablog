@@ -14,6 +14,8 @@ import { AceComponent, AceModule } from 'ace-module';
 import { UsefulComponent } from './share/icons/useful/useful.component';
 import { IconShareModule } from './share/icon-share.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DragDemoComponent } from './share/drag/drag-demo.component';
+import { ShareModule } from './share/share.module';
 
 @NgModule({
     declarations: [
@@ -21,7 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ],
     imports: [
         /* Basic Modules */
-        BrowserModule.withServerTransition({ appId: 'serverApp' }),
+        BrowserModule.withServerTransition({appId: 'serverApp'}),
         /* App Routing */
         AppRoutingModule,
         /*Firebase*/
@@ -33,7 +35,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         HttpClientModule,
         SiteModule,
         AceModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        ShareModule
     ],
     providers: [],
     exports: [
@@ -44,7 +47,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ],
     entryComponents: [
         CustomComponent,
-        AceComponent
+        AceComponent,
+        DragDemoComponent
     ]
 })
 export class AppModule {

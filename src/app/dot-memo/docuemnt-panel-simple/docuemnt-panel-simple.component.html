@@ -1,0 +1,30 @@
+<a [routerLink]="document.id">
+    <article>
+        <header class="height-80px">
+            <h1 class="font-size-20px panel-title">{{documentTitle}}</h1>
+        </header>
+    </article>
+</a>
+<div class="d-flex">
+    <div class="icon-wrapper">
+        <app-useful [color]="iconColor" [width]="width" [height]="height"></app-useful>
+        <div class="icon-count-wrapper">
+                    <span class="icon-count"
+                          [style.color]="iconColor">{{document.usefulCount}}</span>
+        </div>
+    </div>
+    <div class="icon-wrapper">
+        <app-like [color]="iconColor" [width]="width" [height]="height"></app-like>
+        <div class="icon-count-wrapper">
+                    <span class="icon-count"
+                          [style.color]="iconColor">{{document.likeCount}}</span>
+        </div>
+    </div>
+    <div class="icon-wrapper">
+        <app-reliable [color]="iconColor" [width]="width" [height]="height"></app-reliable>
+        <div class="icon-count-wrapper">
+                    <span class="icon-count"
+                          [style.color]="iconColor">{{document.reliableCount}}</span>
+        </div>
+    </div>
+</div>

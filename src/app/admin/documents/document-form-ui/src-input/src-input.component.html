@@ -1,0 +1,11 @@
+<div>
+    <input type="file" (change)="fileChange($event)">
+</div>
+
+<div class="d-flex">
+    <div appDroppable class="width-220px height-120px" (drop)="drop($event)" [@dragover]="state">
+        <div *ngIf="src">
+            <img [src]="src" width="220" height="120" style="object-fit: cover">
+        </div>
+    </div>
+</div>

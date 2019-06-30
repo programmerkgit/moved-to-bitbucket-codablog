@@ -1,0 +1,18 @@
+.droppable {
+  width: 300px;
+  height: 200px;
+  margin-right: 50px;
+  border: solid 5px #2635c7;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 5px;
+}
+
+
+.draggable {
+  padding: 10px 20px;
+  border: solid 2px #799dff;
+  border-radius: 5px;
+}

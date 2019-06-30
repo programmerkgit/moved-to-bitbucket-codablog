@@ -1,0 +1,36 @@
+<p>JavaScriptのDragイベント,Dropイベントには以下の種類があります。</p>
+<ul>
+    <li>drag</li>
+    <li>dragstart</li>
+    <li>dragend</li>
+    <li>dragenter</li>
+    <li>dragover</li>
+    <li>dragleave</li>
+    <li>dragexit</li>
+    <li>drop</li>
+</ul>
+<p>
+    それぞれのイベントのうち、ドラッグ対象で発生するイベントと、
+    ドラッグした対象をドロップされる側で発生するイベントに分けて理解するとわかりやすいです。
+</p>
+<h2>ドラッグ対象側で発生するイベント</h2>
+<ul>
+    <li>drag: ドラッグを開始してから継続して発生</li>
+    <li>dragstart: ドラッグを開始時に発生</li>
+    <li>dragend: ドラッグが終了時に発生</li>
+</ul>
+<h2>ドロップされる側で発生するイベント</h2>
+<ul>
+    <li>dragenter: ドラッグしたオブジェクトが要素の内側に入った時に発生</li>
+    <li>dragover: ドラッグしたオブジェクトが要素の上にある間継続して発生</li>
+    <li>dragleave: ドラッグしたオブジェクトが要素の外に出た時に発生</li>
+</ul>
+<h2>その他</h2>
+<p>以下はサポートされていません。</p>
+<ul>
+    <li>dragexit: 現在サポートされていないので省略</li>
+</ul>
+<h2>デモ</h2>
+<p>紫のエリアがドロップ可能エリアです。</p>
+<p>数字はイベント発生回数をカウントしています。</p>
+<drag-demo></drag-demo>

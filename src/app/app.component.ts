@@ -7,6 +7,7 @@ import { filter } from 'rxjs/operators';
 import { environment } from '../environments/environment';
 import { AceComponent } from 'ace-module';
 import { ApiAuthService } from './service/api-auth.service';
+import { DragDemoComponent } from './share/drag/drag-demo.component';
 
 @Component({
     selector: 'app-root',
@@ -29,6 +30,10 @@ export class AppComponent implements OnDestroy, OnInit {
         const aceElement = createCustomElement(AceComponent, {injector});
         if (document.createElement('ace-editor').constructor === HTMLElement) {
             customElements.define('ace-editor', aceElement);
+        }
+        const dragDemo = createCustomElement(DragDemoComponent, {injector});
+        if (document.createElement('drag-demo').constructor === HTMLElement) {
+            customElements.define('drag-demo', dragDemo);
         }
     }
 

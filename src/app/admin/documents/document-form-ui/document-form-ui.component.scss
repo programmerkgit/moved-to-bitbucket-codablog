@@ -1,0 +1,10 @@
+.thumbnail-container {
+  transition: all ease-in-out 0.5s;
+  height: 300px;
+  opacity: 1;
+}
+
+.thumbnail-hidden {
+  height: 0px;
+  opacity: 0;
+}

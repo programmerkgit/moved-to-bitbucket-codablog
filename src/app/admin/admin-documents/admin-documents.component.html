@@ -1,9 +1,0 @@
-<ng-container *ngIf="documents$ | async as documents">
-    <div class="d-flex flex-wrap">
-        <ng-container *ngFor="let document of documents">
-            <div class="panel">
-                <app-admin-document-panel [document]="document"></app-admin-document-panel>
-            </div>
-        </ng-container>
-    </div>
-</ng-container>

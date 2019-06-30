@@ -30,7 +30,6 @@ export abstract class Model<T extends Model<T>> {
                     values[ key ] = this[ key ];
                 }
             }
-            console.log(values);
             return values;
         }, {});
     };

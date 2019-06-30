@@ -1,0 +1,44 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div class="d-flex mb-50px">
+        <div class="pr-30px" style="width: 50%">
+            <h2>Title</h2>
+            <input class="w-100" placeholder="title" type="text" formControlName="title">
+        </div>
+        <div style="width: 50%">
+            <h2>MetaData</h2>
+            <div class="d-flex">
+                <div class="d-flex align-items-center mr-20px">
+                    <div>id</div>
+                    <input formControlName="id"
+                           readonly style="border: none">
+                </div>
+                <div class="d-flex align-items-center mr-20px">
+                    <div>Show</div>
+                    <input type="checkbox" placeholder="show" formControlName="show">
+                </div>
+                <div class="d-flex align-items-center mr-20px">
+                    <div>Thumbnail</div>
+                    <select formControlName="type">
+                        <option value="blog" selected>blog</option>
+                        <option value="simple">simple</option>
+                        <option value="memo">memo</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="thumbnail-container" [class.thumbnail-hidden]="formGroup.get('type').value !== 'blog'">
+        <h2>Thumbnail</h2>
+        <app-src-input [src]="src"></app-src-input>
+    </div>
+    <div>
+        <h2>Contents</h2>
+        <div style="border: #0B1A41 solid 1px">
+            <div dot-ace class="w-100 height-500px" mode="html"></div>
+        </div>
+    </div>
+    <div class="d-flex">
+        <button class="btn mr-20px" type="submit">更新</button>
+        <button class="btn" (click)="deleteClicked.emit()">削除</button>
+    </div>
+</form>

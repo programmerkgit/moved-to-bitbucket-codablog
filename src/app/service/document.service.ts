@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Document } from '../model/document';
-import { ApiService } from './api-service';
 import { HttpClient } from '@angular/common/http';
+import { ApiModeledService } from './api-modeled-service';
 
 @Injectable({
     providedIn: 'root'
 })
-export class DocumentService extends ApiService<Document> {
+export class DocumentService extends ApiModeledService<Document> {
 
+    model = Document;
     protected _basePath = 'documents';
 
     constructor(

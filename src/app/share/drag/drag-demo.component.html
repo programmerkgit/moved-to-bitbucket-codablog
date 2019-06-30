@@ -1,0 +1,42 @@
+<div class="d-flex">
+    <div class="d-flex flex-column">
+        <div appDroppable
+             (dragenter)="dragenter($event)"
+             (dragover)="dragover($event)"
+             (dragleave)="dragleave($event)"
+             (drop)="drop($event)" class="droppable">
+            <div
+                    (drag)="drag($event)"
+                    (dragend)="dragend($event)"
+                    (dragstart)="dragstart($event)"
+                    draggable="true" class="draggable">
+                draggable</div>
+            <div
+                    (drag)="drag($event)"
+                    (dragend)="dragend($event)"
+                    (dragstart)="dragstart($event)"
+                    draggable="true" class="draggable">
+                draggable</div>
+        </div>
+        <div>
+            <div>drag {{counts.drag}}</div>
+            <div>dragstart {{counts.dragstart}}</div>
+            <div>dragend: {{counts.dragend}}</div>
+        </div>
+    </div>
+    <div class="d-flex flex-column">
+        <div appDroppable
+             (dragenter)="dragenter($event)"
+             (dragover)="dragover($event)"
+             (dragleave)="dragleave($event)"
+             (drop)="drop($event)"
+             class="droppable"></div>
+        <div>
+            <div>dragenter {{counts.dragenter}}</div>
+            <div>dragover {{counts.dragover}}</div>
+            <div>dragleave{{counts.dragleave}}</div>
+            <div>drop: {{counts.drop}}</div>
+        </div>
+    </div>
+</div>
+

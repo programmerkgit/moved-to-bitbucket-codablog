@@ -39,16 +39,12 @@ export class DocumentFeedBacksComponent implements OnInit {
     ) {
     }
 
-    getUser() {
-        return this.apiAuthService.user$;
-    }
-
     ngOnInit() {
         this.documentService.findById(this.documentId, {scopes: [ 'usefulFeedBacks', 'reliableFeedBacks', 'likeFeedBacks' ]}).pipe(
             tap(document => {
-                this.counts[ 'useful' ] = this.summarizeFeedBacks(document.usefulFeedBacks);
-                this.counts[ 'reliable' ] = this.summarizeFeedBacks(document.reliableFeedBacks);
-                this.counts[ 'like' ] = this.summarizeFeedBacks(document.likeFeedBacks);
+                this.counts[ 'useful' ] = document.countFeedBacks('useful');
+                this.counts[ 'reliable' ] = document.countFeedBacks('reliable');
+                this.counts[ 'like' ] = document.countFeedBacks('like');
             }),
             tap(document => {
                 this.subscription = this.apiAuthService.user$.subscribe(user => {
@@ -154,12 +150,6 @@ export class DocumentFeedBacksComponent implements OnInit {
         const type = 'reliable';
         const value = -1;
         this.feedBackFunction(type, value).subscribe();
-    }
-
-    summarizeFeedBacks(feedBacks: FeedBack[]): number {
-        return feedBacks.reduce((value, feedBack) => {
-            return value + feedBack.value || 0;
-        }, 0);
     }
 
 }
