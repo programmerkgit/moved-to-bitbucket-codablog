@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
@@ -25,7 +25,7 @@ import { CategoryEditComponent } from './categories/category-edit/category-edit.
 import { AceDirectiveModule } from '../share/ace-directive/ace-directive.module';
 import { DroppableModule } from '../share/droppable/droppable.module';
 import { ShareModule } from '../share/share.module';
-
+import { AceModule } from 'ace-module';
 @NgModule({
     declarations: [
         AdminComponent,
@@ -42,9 +42,13 @@ import { ShareModule } from '../share/share.module';
         AceDirectiveModule,
         DroppableModule,
         FormsModule,
-        ShareModule
+        ShareModule,
+        AceModule
         /* share */
     ],
+    schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+    ]
 })
 export class AdminModule {
 }

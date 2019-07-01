@@ -3,3 +3,18 @@
 <p>Decoratorはアノテーションやメタプログラミングの構文を提供してくれます。</p>
 <p></p>
 <app-drag-demo></app-drag-demo>
+
+<ace-editor value="
+#primitive型の例
+let a = 'abc' #primitive型を渡す
+a[0] = 'd'
+console.log(a) # => 'abc'. primitive型は値渡しで、かつ変更されない。
+#object型の例
+let b = {hoge: 'fuga'}
+let a = b
+a.foo = 'bar'
+console.log(b) # => {hoge: 'fuga', foo: 'bar'} . 参照しているobjectのプロパティーは書き換わる.
+a = {hoge: 'gafu'}
+console.log(a) # => {hoge: 'gafu'}. aが参照している値は別のobjectに書き換わる。
+console.log(b) # => {hoge: 'fuga'}. bへ影響を受けない
+"></ace-editor>
